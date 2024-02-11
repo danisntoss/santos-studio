@@ -1,11 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-
+import Introduccion from '../components/Introduction.astro';
+import Vinilos from '../components/Vinilos.astro';
+import Card from '../components/Card.astro';
+import Contacto from '../components/Contacto.astro';
 ---
 
-<Layout title="Vinilos de corte | Dani Santos">
-	<Header></Header>
+<Layout title="Vinilos de corte | Dani Santos"></Layout>
+	<Introduccion/>
+	<Vinilos>
+		<Card></Card>
+		<Card></Card>
+		<Card></Card>
+	</Vinilos>
+	<Contacto/>
 </Layout>
 
 <style>
