@@ -4,9 +4,12 @@ import Introduccion from '../components/Introduction.astro';
 import Vinilos from '../components/Vinilos.astro';
 import Card from '../components/Card.astro';
 import Contacto from '../components/Contacto.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 ---
 
 <Layout title="Vinilos de corte | Dani Santos"></Layout>
+	<Header/>
 	<Introduccion/>
 	<Vinilos>
 		<Card></Card>
@@ -14,6 +17,7 @@ import Contacto from '../components/Contacto.astro';
 		<Card></Card>
 	</Vinilos>
 	<Contacto/>
+	<Footer/>
 </Layout>
 
 <style>
