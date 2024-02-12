@@ -4,6 +4,7 @@ import Introduccion from '../components/Introduction.astro';
 import Vinilos from '../components/Vinilos.astro';
 import Contacto from '../components/Contacto.astro';
 import Card from '../components/Card.astro';
+import Social from '../components/Social.astro';
 ---
 
 <Layout title="Vinilos de corte | Dani Santos">
@@ -16,7 +17,9 @@ import Card from '../components/Card.astro';
 		<Card  title="METRO" img="https://www.hofmann.es/blog/wp-content/uploads/2021/09/HF_3_Paisajes_WEB-23-1024x768.jpg"/>
 		<Card  title="METRO" img="/metro.jpg"/>
 	</Vinilos>
-	<Contacto/>
+	<Contacto>
+		<Social title="@danisntoss_" link="https://www.instagram.com/danisntoss_" logo="/Instagram_3.png" />
+	</Contacto>
 
 </Layout>
 
