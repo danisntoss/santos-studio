@@ -1,28 +1,45 @@
+---
+import Clipboard from "./Clipboard-Icon.astro";
+---
 <section id="Contacto">
+  <h1>Contacto</h1>
+  <p>
+    danisntoss00@gmail.com <button> <Clipboard/>
+    </button>
+  </p>
 
-    <h1>Contacto</h1>
-    <p>Para más información: escribe a danisntoss00@gmail.com</p>
-    <slot/>
+  <slot />
 </section>
 
 <style>
-   section {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: left;
-        padding: 20px;
-        width: 80%;
-
-    }
-    h1 {
-        font-size: 5rem;
-    }
-    p {
-        font-size: 1.5rem;
-        width: 70%;
-    }
+  section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    width: 80%;
+  }
+  h1 {
+    font-size: 5rem;
+  }
+  p {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+  button {
+    padding: 15px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
 </style>
-        
+<script>
+  function copiarCodigo() {
+    navigator.clipboard.writeText("danisntoss00@gmail.com");
+    console.log("Copiado");
+  }
+  document.querySelector("button").addEventListener("click", copiarCodigo);
+</script>
