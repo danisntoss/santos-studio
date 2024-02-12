@@ -31,12 +31,13 @@ const { title } = Astro.props;
 
 <style is:global>
 	:root{
-		
- 	--bg-color:#ff8f08;
- 	--color2:#ffc108;
- 	--color3: #ffec3b;
- 	--color4:  #fffb89;
-	--color5: #fffbcb;
+ 	--bg-color:#092129;
+ 	--color2:#0f3a51;
+ 	--color3: #1a6582;
+ 	--color4:  #269abb;
+	--color5: #2bc9c8;
+	--text-color: #000;
+	color-scheme: dark;
 	}
 	* {
 		margin: 0;
@@ -44,17 +45,24 @@ const { title } = Astro.props;
 		box-sizing: border-box;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 		font-size: 18px;
-		color: var(--text-color)
+		color: var(--text-color);
+		scroll-behavior: smooth;
+		
 	}
 
 	body{
-	/* background: #eee url(/cartographer.png); */
-	/* background-color: #fab005; */
 	background-color: var(--bg-color);
-
+	background: radial-gradient(
+            at center top,
+            #fab005 0%,
+            #f08c00 100%
+        );
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	}
 	main {
-		width: 100%;
+		width: 80%;
         display: flex;
         flex-direction: column;
         align-items: center;

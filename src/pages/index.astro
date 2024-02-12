@@ -3,12 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import Introduccion from '../components/Introduction.astro';
 import Vinilos from '../components/Vinilos.astro';
 import Contacto from '../components/Contacto.astro';
+import Card from '../components/Card.astro';
 ---
 
 <Layout title="Vinilos de corte | Dani Santos">
 	<Introduccion/>
-	<!-- <Vinilos>
-	</Vinilos> -->
+	<Vinilos>
+		<Card  title="METRO" img="/metro.jpg"/>
+		<Card  title="METRO" img="/metro.jpg"/>
+	</Vinilos>
 	<!-- <Contacto/> -->
 </Layout>
 
