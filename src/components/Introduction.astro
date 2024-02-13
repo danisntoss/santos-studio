@@ -1,7 +1,7 @@
 <section id="introduction" >
     <h1>Hola! Soy Dani, </h1>
     <p>
-    estudiante de <b>Ingeniería Software</b>
+    Explora el <b>arte</b> del vinilo de corte: <b>creatividad</b> que transforma superficies comunes.
     </p>
 </section>
 <style>
@@ -9,22 +9,63 @@
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         text-align: left;
         padding: 20px;
-        width: 60%;
+        width: 100%;
+        gap: 3rem;
 
     }
     h1 {
-        font-size: 5rem;
+        font-size: 8rem;
+
     }
     p {
-        font-size: 1.5rem;
-        width: 75%;
+        font-size: 2rem;
+        width: 100%;
+        text-align: left;
+        font-style: italic;
     }  
     b{
         font-size: 1.3em;
 
+    }
+    @media (max-width: 850px) {
+        section {
+            gap: 1rem;
+        }
+        h1 {
+            font-size: 5rem;
+        }
+        p {
+            font-size: 1.5rem;
+        }
+    }
+    @media (max-width: 490px) {
+        section {
+            gap: 0.5rem;
+            text-align: left;
+        }
+        h1 {
+            font-size: 4rem;
+        }
+        p {
+            font-size: 1.2rem;
+            text-align: left;
+        }
+    }
+    @media (max-width: 400px) {
+        section {
+            gap: 0.3rem;
+            text-align: left;
+        }
+        h1 {
+            font-size: 3.5rem;
+        }
+        p {
+            font-size: 1rem;
+            text-align: left;
+        }
     }
 </style>
