@@ -1,11 +1,11 @@
 ---
-const { title, link, logo } = Astro.props;
+const { link, logo } = Astro.props;
 ---
 
 <section>
   <a target="_blank" href={link}>
-    {title}
-    <img src={logo} alt={title}>
+    
+    <img src={logo} alt="">
   </a>
 </section>
 
@@ -14,7 +14,11 @@ const { title, link, logo } = Astro.props;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 1rem;
+        width: 60px;
+        height: 60px;
+        padding: 15px;
+        background: none;
+        cursor: pointer;
     }
     
     a {
@@ -33,6 +37,5 @@ const { title, link, logo } = Astro.props;
     img {
         width: 2rem;
         height: 2rem;
-        margin-left: 0.5rem;
     }
 </style>
