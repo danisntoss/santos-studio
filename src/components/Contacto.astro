@@ -18,7 +18,7 @@ import Clipboard from "./Clipboard-Icon.astro";
   <div class="socials">
     <slot />
   </div>
-  
+
 </section>
 
 <style>
@@ -53,14 +53,19 @@ import Clipboard from "./Clipboard-Icon.astro";
   }
 
   button {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 50px;
+    height: 50px;
     padding: 15px;
     background: none;
     border: none;
     cursor: pointer;
     border-radius: 50px;
-    border: 1px solid #000;
+    border: 2px solid #000;
     &:hover {
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.5);
       color: #fff;
     }
   }
