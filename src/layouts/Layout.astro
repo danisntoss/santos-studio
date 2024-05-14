@@ -30,11 +30,11 @@ const { title } = Astro.props;
 
 <style is:global>
   :root {
-    --bg-color: #092129;
-    --color2: #0f3a51;
-    --color3: #1a6582;
-    --color4: #269abb;
-    --color5: #2bc9c8;
+    --col1: #FFE5EC;
+    --col2: #FFC2D1;
+    --col3: #FFB3C6;
+    --col4: #FF8FAB;
+    --col5: #FB6F92;
     --text-color: #000;
     color-scheme: dark;
   }
@@ -60,7 +60,7 @@ const { title } = Astro.props;
   }
 
   body {
-    background: radial-gradient(at center top, #ffb3c6 0%, #fb6f92 100%);
+    background: radial-gradient(at center top, var(--col4) 0%, var(--col5) 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
