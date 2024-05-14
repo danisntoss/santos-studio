@@ -17,20 +17,20 @@ const { img, title } = Astro.props;
   section {
     padding: 20px;
     background-color: #f4f4f4;
-    /* border-radius: 15px; */
+    border-radius: 15px;
     height: 450px;
-    width: 500px;
+    width: 1000px;
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
   }
   .image{
-    height: 75%;
-    width:100%;
+    height: 100%;
+    width:50%;
   }
   img {
     object-fit:cover;
-    /* border-radius: 15px; */
+    border-radius: 10px;
     height: 100%;
     width: 100%;
   }
@@ -39,6 +39,8 @@ const { img, title } = Astro.props;
         justify-content: center;
         align-items: center;
         height: 25%;
+        width: 50%;
+        /* border: 1px solid black */
     }
     h1 {
         font-size: 1.5rem;
