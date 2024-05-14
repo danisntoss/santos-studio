@@ -1,13 +1,18 @@
 ---
-const { img, title } = Astro.props;
+const { img, title, description } = Astro.props;
 ---
 
 <section>
+<div class="main-card">
   <div class="image">
     <img src={img} alt="" />
+  </div>
+  <div class="title">
+    <h1>{title}</h1>
+  </div>
 </div>
-<div class="content">
-  <h1>{title}</h1>
+<div class="description">
+    <p>{description}</p>
 </div>
 </section>
 
@@ -21,12 +26,18 @@ const { img, title } = Astro.props;
     height: 450px;
     width: 1000px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+  }
+  .main-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
   }
   .image{
     height: 100%;
-    width:50%;
+    width:100%;
   }
   img {
     object-fit:cover;
@@ -34,15 +45,23 @@ const { img, title } = Astro.props;
     height: 100%;
     width: 100%;
   }
-    .content {
+    .title {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 25%;
-        width: 50%;
+        width: 100%;
         /* border: 1px solid black */
     }
     h1 {
         font-size: 1.5rem;
+    }
+    .description {
+        display:flex;
+        justify-content: top;
+        align-items: top;
+        height: 100%;
+        width: 100%;
+        padding: 15px;
     }
 </style>
