@@ -22,8 +22,11 @@ const { title } = Astro.props;
   </head>
   <body>
     <Header />
+    <section>
+      <slot name="welcomePage" />
+    </section>
     <main>
-      <slot />
+      <slot name="main" />
     </main>
     <Footer />
   </body>
@@ -37,10 +40,10 @@ const { title } = Astro.props;
     --col4: #FF8FAB;
     --col5: #FB6F92;
     --text-color: #000;
+    --bg-color: #fff;
     color-scheme: dark;
   }
   * {
-    /* border: 1px solid black; */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -61,7 +64,9 @@ const { title } = Astro.props;
     scroll-behavior: smooth;
     /* border: 1px solid black */
   }
-
+  section{
+    width: 100%;
+  }
   body {
     background: radial-gradient(at center top, var(--col4) 0%, var(--col5) 100%);
     display: flex;

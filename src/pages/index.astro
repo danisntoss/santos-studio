@@ -1,25 +1,66 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Introduccion from '../components/Introduction.astro';
-import Vinilos from '../components/Vinilos.astro';
-import Contacto from '../components/Contacto.astro';
-import Card from '../components/Card.astro';
-import Social from '../components/Social.astro';
+import Layout from "../layouts/Layout.astro";
+import Introduccion from "../components/Introduction.astro";
+import Vinilos from "../components/Vinilos.astro";
+import Contacto from "../components/Contacto.astro";
+// import Card from '../components/Card.astro';
+import Social from "../components/Social.astro";
+import Bento from "../components/Bento.astro";
+import BentoCard from "../components/BentoCard.astro";
 ---
 
 <Layout title="Vinilos de corte | Dani Santos">
-	<Introduccion/>
-	<Vinilos>
-		<Card  title="Proyecto 1" img="/imgs/metro.jpg" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum "/>
-		
-	</Vinilos>
-	<Contacto>
-		<Social  link="https://www.instagram.com/danisntoss_" logo="/Instagram_3.png" />
-		<Social  link="https://www.linkedin.com/in/danisantos15/" logo="/linkedin.png" />
-		<Social  link="https://github.com/danisntoss" logo="/github.png" />
-	</Contacto>
-
+	<Introduccion slot="welcomePage" />
+	<main slot="main">
+		<Vinilos>
+			<!-- <Card  title="Proyecto 1" img="/imgs/metro.jpg" description=" Vinilo creado para la multinacional metro con el fin de arreglar la estética de una de las paradas más icónicas de todo Madrid"/> -->
+			<Bento>
+				<BentoCard
+					slot="slot1"
+					title="TITULO"
+					image="/imgs/metro.jpg"
+					url="/imgs/metro.jpg"
+					information="dfssdfdsfdsfsdfsdfsdfsf"
+				/>
+				<BentoCard
+					slot="slot2"
+					title="TITULO"
+					image="/imgs/metro.jpg"
+					url="/imgs/metro.jpg"
+					information="sdfdsfdsfdsfdsfsdfdsfsdfdsf"
+				/>
+				<BentoCard
+					slot="slot3"
+					title="dfdsfdsf"
+					image="/imgs/metro.jpg"
+					url="/imgs/metro.jpg"
+					information="sdfdsfdsfsdfdsfsdfdsfsdfsdf"
+				/>
+				<BentoCard
+					slot="slot4"
+					title="sfsdfdfsf"
+					image="/imgs/metro.jpg"
+					url=""
+					information="sdfdsfdsfsdfsfdfsdfsdfsdfsdfsdf"
+				/>
+			</Bento>
+		</Vinilos>
+		<Contacto>
+			<Social
+				link="https://www.instagram.com/danisntoss_"
+				logo="/Instagram_3.png"
+			/>
+			<Social
+				link="https://www.linkedin.com/in/danisantos15/"
+				logo="/linkedin.png"
+			/>
+			<Social link="https://github.com/danisntoss" logo="/github.png" />
+		</Contacto>
+	</main>
 </Layout>
 
 <style>
+	main {
+		width: 100%;
+	}
 </style>
