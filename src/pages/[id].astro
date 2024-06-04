@@ -1,0 +1,36 @@
+---
+import type { GetStaticPaths } from "astro";
+import {data} from "../data/data"
+import Layout from "../layouts/Layout.astro";
+const {id} = Astro.params;
+const item = data.find((item) => item.id === id);
+export const getStaticPaths = (() => {
+    const params = data.flatMap((item) => {
+        return {
+            params: {
+                id: item.id,
+                name: item.name,
+                image: item.image,
+                description: item.description,
+            },
+        };
+    });
+    return params;
+}) satisfies GetStaticPaths;
+---
+
+<Layout title={item.name} >
+    <div slot="main" class="main-content">
+    <h1>{item.name}</h1>
+    <img src={item.image} alt={item.name} />
+    <p>{item.description}</p>
+    <a href="/">Back to home</a>
+    </div>
+</Layout>
+
+<style>
+    img{
+        width: 200px;
+        height: 200px;
+        }
+</style>

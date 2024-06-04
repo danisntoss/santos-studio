@@ -2,7 +2,7 @@
 const { title, image, url, information } = Astro.props;
 ---
 
-<a href={url} target="_blank" class="bento-card">
+<a href={url} class="bento-card">
     <img src={image} alt={title} />
     <div class="text-info">
         <h3>{title}</h3>
