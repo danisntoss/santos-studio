@@ -29,8 +29,38 @@ export const getStaticPaths = (() => {
 </Layout>
 
 <style>
-    img{
-        width: 200px;
-        height: 200px;
+    .main-content{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #eee;
+        padding: 2rem;
+        border-radius: 10px;
+        h1{
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        
         }
+        img{
+            width: 100%;
+            max-width: 700px;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+        }
+        p{
+            margin-bottom: 1rem;
+        }
+        a{
+            font-style: bold;
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            background-color: var(--col4);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+    }
+    
 </style>
