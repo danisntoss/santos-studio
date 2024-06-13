@@ -4,17 +4,25 @@ import Clipboard from "./Clipboard-Icon.astro";
 
 <section id="Contacto">
   <h1>Contáctame</h1>
+  <div class="wrapper">
+  <div class="text-section">
   <div class="texto-info">
     <p>Me llamo <b>Daniel Santos,</b> soy estudiante de Ingeniería en Software.
       Si tienes algún proyecto en mente, no dudes en contactarme, estaré encantado de ayudarte.
     </p>
   </div>
+  
   <div class="informacion-contacto">
     <span>danisntoss00@gmail.com</span>
     <button>
       <span>Cópiame</span>
       <Clipboard />
     </button>
+  </div>
+  </div>
+  <div class="image-section">
+      <img src="/call.png" alt="call-animoji">
+    </div>
   </div>
   <div class="socials">
     <slot />
@@ -24,14 +32,13 @@ import Clipboard from "./Clipboard-Icon.astro";
 
 <style>
   section {
+    width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    width: 100%;
-    gap: 2rem;
+    gap: 4rem;
   }
   h1 {
     font-size: 5rem;
@@ -77,24 +84,62 @@ import Clipboard from "./Clipboard-Icon.astro";
     }
   }
 
+  .wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+
+}
+.text-section{
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
   .texto-info {
     width: 100%;
-    max-width: 600px;
+    height: 100%;
+    gap: 20px;
+    padding: 20px;
+    background-color: #ffffff71;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    background-size: cover;
+    
   }
   .informacion-contacto {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     text-align: center;
     gap: 20px;
     padding: 20px;
-    width: 600px;
     background-color: #ffffff71;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     background-size: cover;
 
   }
+  
+  .image-section{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #ffffff71;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    background-size: cover;
+    width: 35%;
+    img{
+    width: 100%;
+    
+  }}
   .socials {
     display: flex;
     justify-content: center;
@@ -102,7 +147,7 @@ import Clipboard from "./Clipboard-Icon.astro";
     gap: 20px;
     margin-top: 20px;
   }
-
+  
   
   
   @media (max-width: 768px) {
@@ -118,6 +163,12 @@ import Clipboard from "./Clipboard-Icon.astro";
     }
     span{
       font-size: 2rem;
+    }
+    .wrapper{
+      flex-direction: column;
+    }
+    .image-section img{
+      height: 40%;
     }
   }
   @media (max-width:650px){
