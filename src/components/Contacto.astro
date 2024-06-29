@@ -150,33 +150,32 @@ import Clipboard from "./Clipboard-Icon.astro";
   
   
   
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
+    .wrapper {
+        flex-direction: column; 
+        align-items: center;
+    }
+    .text-section, .image-section {
+        width: 90%; 
+    }
+    .texto-info, .informacion-contacto {
+        width: 100%; 
+        text-align: center; 
+        align-items: center;
+    }
+    .image-section img {
+        width: 80%;
+    }
+}
+  @media (max-width:768px){
     h1 {
-      font-size: 3rem;
+      font-size: 3.6rem;
     }
     p {
       font-size: 1rem;
     }
-    .informacion-contacto {
-      width: 100%;
-      padding: 10px;
-    }
-    span{
-      font-size: 2rem;
-    }
-    .wrapper{
-      flex-direction: column;
-    }
-    .image-section img{
-      height: 40%;
-    }
-  }
-  @media (max-width:650px){
-    h1 {
-      font-size: 2rem;
-    }
-    p {
-      font-size: 1rem;
+    b{
+      font-size: 1.2rem;
     }
     .informacion-contacto {
       width: 100%;
@@ -188,10 +187,7 @@ import Clipboard from "./Clipboard-Icon.astro";
   }
   @media (max-width: 450px) {
     h1 {
-      font-size: 2rem;
-    }
-    p {
-      font-size: 1rem;
+      font-size: 3rem;
     }
     .informacion-contacto {
       width: 100%;
@@ -200,13 +196,13 @@ import Clipboard from "./Clipboard-Icon.astro";
     span{
       font-size: 1.3rem;
     }
+    .image-section img {
+        width: 100%;
+    }
   }
   @media (max-width: 350px) {
     h1 {
-      font-size: 1.5rem;
-    }
-    p {
-      font-size: 1rem;
+      font-size: 2.5rem;
     }
     .informacion-contacto {
       width: 100%;
