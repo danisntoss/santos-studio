@@ -52,4 +52,19 @@
         grid-column: 7 / 13;
         grid-row: 5 / 9;
     }
+    @media (max-width: 1024px) {
+    .bento-grid {
+        grid-template-columns: repeat(1, 1fr); /* Cambia a una sola columna */
+        grid-template-rows: auto; /* Ajusta automáticamente la altura de las filas */
+    }
+
+    .bento-grid-item.a,
+    .bento-grid-item.b,
+    .bento-grid-item.c,
+    .bento-grid-item.d {
+        grid-column: 1 / -1; /* Hace que cada elemento ocupe la única columna disponible */
+        grid-row: auto; /* Ajusta automáticamente la posición de la fila */
+    }
+    .bento-grid-item.d {margin-bottom: 50px;}
+}
 </style>
