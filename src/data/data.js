@@ -1,26 +1,26 @@
 export const data = [
     {
         id: "1",
-        name: "Metro",
-        image: "/imgs/metro.jpg",
-        description: "Creado para una parada de metro, para devolver la esencia de los antiguos carteles de metro de Madrid"
+        name: "Estanco",
+        image: "/imgs/estanco.jpeg",
+        description: "Diseñado y cortado para arreglar el antiguo cartel que tenían puesto en la fachada."
     },
     {
         id: "2",
-        name: "Estanco",
-        image: "/imgs/estanco.jpeg",
-        description: "Creado para un particular, con el fin de arreglar el anterior letrero que tenia"
+        name: "Metro",
+        image: "/imgs/metro.jpg",
+        description: "Creado para una furgoneta de la empresa."
     },
     {
         id: "3",
         name: "La Plazuela",
         image: "/imgs/plazuela.jpeg",
-        description: "Creado para una papelera, con el fin de personalizar su furgoneta de reparto"
+        description: "Creado para una papelería, con el fin de personalizar su furgoneta de reparto"
     },
     {
         id: "4",
-        name: "Pegatinas!",
-        image: "/imgs/pegatinas.jpeg",
-        description: "Algunas pegatinas que he hecho para personalizar objetos"
+        name: "Honda Civic",
+        image: "/imgs/civic.jpeg",
+        description: "Diseñado y cortado para personalizar este Civic"
     },
 ]

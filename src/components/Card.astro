@@ -40,12 +40,14 @@ const { img, title, description } = Astro.props;
     height: 100%;
     width:100%;
   }
-  img {
-    object-fit:cover;
+    img {
+    object-fit: cover;
     border-radius: 10px;
-    height: 100%;
-    width: 100%;
-  }
+    max-width: 650px; /* Establece un ancho máximo de 650px */
+    max-height: 650px; /* Establece una altura máxima de 650px */
+    height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
+    width: auto; /* Ajusta el ancho automáticamente para mantener la proporción */
+    }
     .title {
         display: flex;
         justify-content: center;
