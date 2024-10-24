@@ -1,7 +1,47 @@
-<section id="Proyectos">
-  <!-- <h1>Proyectos</h1> -->
+---
+import { data } from "../data/data";
+import BentoCard from "./BentoCard.astro";
+import Bento from "./Bento.astro";
+---
+
+<section>
   <main>
-    <slot />
+    {data.map((bento, bentoIndex) => (
+      <Bento key={bentoIndex}>
+            <BentoCard
+              key={bento[0].id}
+              url={`/${bento[0].id}`}
+              title={bento[0].name}
+              image={bento[0].image}
+              description={bento[0].description}
+              slot="slot1" 
+            />
+            <BentoCard
+              key={bento[1].id}
+              url={`/${bento[1].id}`}
+              title={bento[1].name}
+              image={bento[1].image}
+              description={bento[1].description}
+              slot="slot2" 
+            />
+            <BentoCard
+              key={bento[2].id}
+              url={`/${bento[2].id}`}
+              title={bento[2].name}
+              image={bento[2].image}
+              description={bento[2].description}
+              slot="slot3"
+            />
+            <BentoCard
+              key={bento[3].id}
+              url={`/${bento[3].id}`}
+              title={bento[3].name}
+              image={bento[3].image}
+              description={bento[3].description}
+              slot="slot4" 
+            />
+      </Bento>
+    ))}
   </main>
 </section>
 
@@ -15,23 +55,5 @@
     justify-content: center;
     width: 100%;
    
-  }
-  h1 {
-    font-size: 5rem;
-  }
-  main {
-    display: flex;
-    flex-wrap:wrap;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    width: 100%;
-  }
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 3rem;
-    }
-
   }
 </style>

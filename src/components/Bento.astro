@@ -1,5 +1,3 @@
----
----
 
 <section>
     <div class="bento-grid">
@@ -21,7 +19,7 @@
 <style>
     section {
         width: 100%;
-        /* height: 1200px; */
+        margin-bottom: 30px;
     }
 
     .bento-grid {
@@ -29,42 +27,70 @@
         height: 100%;
         display: grid;
         grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: repeat(10, 1fr);
+        grid-template-rows: repeat(8, 1fr);
         grid-gap: 30px;
     }
 
+    @keyframes show {
+        from {
+            transform: scale(0.75);
+        }
+
+        to {
+            transform: scale(1);
+        }
+    }
+
+    .bento-grid-item {
+        view-timeline-name: --image;
+        view-timeline-axis: block;
+
+        animation-timeline: --image;
+        animation-name: show;
+
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+        animation-fill-mode: both;
+        animation-range: entry 25% cover 30%;
+    }
+
     .bento-grid-item.a {
-        grid-column: 1 / 9;
+        grid-column: 1 / 8;
         grid-row: 1 / 5;
     }
 
     .bento-grid-item.b {
-        grid-column: 9 / 13;
+        grid-column: 8 / 13;
         grid-row: 1 / 5;
     }
 
     .bento-grid-item.c {
-        grid-column: 1 / 7;
+        grid-column: 1 / 6;
         grid-row: 5 / 9;
     }
 
     .bento-grid-item.d {
-        grid-column: 7 / 13;
+        grid-column: 6 / 13;
         grid-row: 5 / 9;
     }
     @media (max-width: 1024px) {
-    .bento-grid {
-        grid-template-columns: repeat(1, 1fr); /* Cambia a una sola columna */
-        grid-template-rows: auto; /* Ajusta automáticamente la altura de las filas */
-    }
+        .bento-grid {
+            grid-template-columns: repeat(
+                1,
+                1fr
+            );
+            grid-template-rows: auto;
+        }
 
-    .bento-grid-item.a,
-    .bento-grid-item.b,
-    .bento-grid-item.c,
-    .bento-grid-item.d {
-        grid-column: 1 / -1; /* Hace que cada elemento ocupe la única columna disponible */
-        grid-row: auto; /* Ajusta automáticamente la posición de la fila */
+        .bento-grid-item.a,
+        .bento-grid-item.b,
+        .bento-grid-item.c,
+        .bento-grid-item.d {
+            grid-column: 1 / -1;
+            grid-row: auto;
+        }
+        .bento-grid-item.d {
+            margin-bottom: 50px;
+        }
     }
-    .bento-grid-item.d {margin-bottom: 50px;}
-}
 </style>

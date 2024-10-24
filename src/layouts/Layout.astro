@@ -75,21 +75,13 @@ const { title } = Astro.props;
     align-items: center;
   }
   main {
-    width: 60%;
+    width: 100%;
+    max-width: 1240px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-  }
-  @media (max-width: 1440px) {
-    main {
-      width: 80%;
-    }
-  }
-  @media (max-width: 550px) {
-    main {
-      width: 90%;
-    }
+    padding: 10px;
   }
 </style>

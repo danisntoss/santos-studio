@@ -1,12 +1,12 @@
 ---
-const { title, image, url, information } = Astro.props;
+const { title, image, url, description } = Astro.props;
 ---
 
 <a href={url} class="bento-card">
     <img src={image} alt={title} />
     <div class="text-info">
         <h3>{title}</h3>
-        <p>{information}</p>
+        <p>{description}</p>
     </div>
 </a>
 
@@ -23,9 +23,10 @@ const { title, image, url, information } = Astro.props;
         gap: 20px;
         flex-direction: column;
         border-radius: 10px;
-        /* background-color: #eee; */
         background-color: #ffffffca;
         transition: all 0.2s ease-in-out;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
 
         img {
             width: 100%;
@@ -48,7 +49,6 @@ const { title, image, url, information } = Astro.props;
 
         &:hover {
             transform: translateY(-5px);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             cursor: pointer;
         }
     }

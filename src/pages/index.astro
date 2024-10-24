@@ -7,43 +7,13 @@ import Contacto from "../components/Contacto.astro";
 import Social from "../components/Social.astro";
 import Bento from "../components/Bento.astro";
 import BentoCard from "../components/BentoCard.astro";
+import { data } from "../data/data";
 ---
 
 <Layout title="Vinilos de corte | Dani Santos">
 	<Introduccion slot="welcomePage" />
 	<main slot="main">
-		<Vinilos>
-			<Bento>
-				<BentoCard
-					slot="slot1"
-					title="Estanco"
-					image="/imgs/estanco.jpeg"
-					url="/1"
-					information="Diseñado y cortado para arreglar el antiguo cartel que tenían puesto en la fachada."
-				/>
-				<BentoCard
-					slot="slot2"
-					title="Metro"
-					image="/imgs/metro.jpg"
-					url="/2"
-					information="Creado para una furgoneta de la empresa."
-				/>
-				<BentoCard
-					slot="slot3"
-					title="La Plazuela"
-					image="/imgs/plazuelaCuad.jpeg"
-					url="/3"
-					information="Creado con el fin de rotular la furgoneta de reparto y darle un toque más personalizado."
-				/>
-				<BentoCard
-					slot="slot4"
-					title="Honda Civic"
-					image="/imgs/civic.jpeg"
-					url="/4"
-					information="Diseño y corte de parasol, llantas y pegatina de la luna."
-				/>
-			</Bento>
-		</Vinilos>
+		<Vinilos/>
 		<Contacto>
 			<Social
 				link="https://www.instagram.com/santos.studi0"
