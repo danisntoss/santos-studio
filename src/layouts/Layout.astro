@@ -3,9 +3,9 @@ interface Props {
   title: string;
 }
 
-
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { CONSTANTS } from "../data/constants";
 
 const { title } = Astro.props;
 ---
@@ -14,11 +14,12 @@ const { title } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="author" content={CONSTANTS.webdata.author} />
+    <meta name="description" content={CONSTANTS.webdata.description} />
+    <meta name="keywords" content={CONSTANTS.webdata.keywords} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{title || CONSTANTS.webdata.title}</title>
   </head>
   <body>
     <Header />
@@ -41,7 +42,6 @@ const { title } = Astro.props;
     --col5: #FB6F92;
     --text-color: #000;
     --bg-color: #fff;
-    color-scheme: dark;
   }
   * {
     margin: 0;
@@ -62,13 +62,13 @@ const { title } = Astro.props;
     font-size: 18px;
     color: var(--text-color);
     scroll-behavior: smooth;
-    /* border: 1px solid black */
+    scrollbar-width: thin;
+    scrollbar-color: #666 #f7f7f7;
   }
   section{
     width: 100%;
   }
   body {
-    /* background: radial-gradient(at center top, var(--col4) 0%, var(--col5) 100%); */
     background: var(--bg-color);
     display: flex;
     flex-direction: column;
