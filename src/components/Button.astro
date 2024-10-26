@@ -1,40 +1,48 @@
 ---
 interface Props {
-    name: string;
+    name?: string;
     link?: string;
     type?: "primary" | "secondary" | "special";
+    color?: string;
     buttonType?: "button" | "submit" | "reset";
 }
 
-const { name, link, type, buttonType } = Astro.props;
+const { name, link, type, color, buttonType } = Astro.props;
 ---
 
 {
     link ? (
-        <a href={link} class={`btn ${type}`}>
-            {name}
+        <a href={link} class={`btn ${type}`} rel="noopener noreferrer">
+            <span style={{ color: color }}>{name}</span>
+            <slot />
         </a>
     ) : (
         <button type={buttonType} class={`btn ${type}`}>
-            {name}
+            <span style={{ "color:": color }}>{name}</span>
+            <slot />
         </button>
     )
 }
 
 <style>
-    .btn {
-        align-items: center;
-        border-radius: 5px;
-        border: 1px solid transparent;
-        padding: 5px 10px;
-        display: inline-flex;
-        justify-content: center;
-        flex-shrink: 0;
+    span {
+        color: inherit;
         font-size: 1rem;
         font-weight: 500;
         line-height: 1.25rem;
+    }
+
+    .btn {
+        border: 1px solid transparent;
+        border-radius: 5px;
+        padding: 5px 10px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        flex-shrink: 0;
         min-height: 38px;
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
         color: #eee;
         background: black;
         text-decoration: none;
@@ -46,17 +54,16 @@ const { name, link, type, buttonType } = Astro.props;
     }
 
     .btn.primary:hover {
-        background-color: var(--accent-color-hover);
+        transform: translateX(5px);
     }
 
     .btn.secondary {
-        border: 1px solid black;
         background-color: transparent;
         color: black;
     }
 
     .btn.secondary:hover {
-        background-color: var(--accent-color-light);
+        transform: translateY(-2px);
     }
 
     .btn.special {
