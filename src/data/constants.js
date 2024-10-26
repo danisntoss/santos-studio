@@ -11,6 +11,10 @@ export const CONSTANTS = {
         instagram: {
             url: 'https://www.instagram.com/santos.studi0/',
             icon: '/icons/instagram.svg'
+        },
+        email: {
+            url: 'mailto:dani@santos-studio.es',
+            icon: '/icons/email.svg'
         }
     },
     webdata: {

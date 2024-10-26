@@ -29,14 +29,15 @@ const { link, logo, alt } = Astro.props;
         cursor: pointer;
         transition: all 0.2s ease-in-out;
     }
-    
-    a:hover {
-        border: 1px solid #444;
-        background-color: #c1c1c117;
-    }
-    
+
     img {
         width: 100%;
         height: 100%;
     }
+    
+    a:hover {
+        background-color: #c1c1c117;
+        filter: contrast(2);
+    }
+    
 </style>
