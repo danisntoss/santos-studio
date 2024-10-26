@@ -10,7 +10,7 @@ import Button from './Button.astro';
     <div class="title">
         <h1>Santos Studio.</h1>
         <p>Proyecto personal. Estudio de diseño y corte de vinilo.</p>
-        <Button name='Tengo un proyecto en mente!' link='#Contacto'/>
+        <Button name='Tengo un proyecto en mente!' link='/contacto'/>
     </div>
     
 </section>
@@ -40,18 +40,14 @@ import Button from './Button.astro';
         width: 55%;
         flex-direction: column;
         gap: 0.7rem;
-        /* height: 100%; */
-        /* border: solid black 1px; */
     }
     .image {
         display: flex;
         align-items: center;
         justify-content: center;
         width: 45%;
-        /* height: 100%; */
         img{
             width: 120px;
-            /* border-radius: 0 0 0 60%; */
             filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
         }
         
@@ -59,7 +55,7 @@ import Button from './Button.astro';
     @media (max-width: 815px) {
     section {
         flex-direction: column;
-        gap: 1rem; /* Añade un poco de espacio entre el título y la imagen */
+        gap: 1rem; 
         text-align: center;
         align-items: center;
         justify-content: space-evenly;
@@ -67,19 +63,20 @@ import Button from './Button.astro';
         padding-top: 15%
     }
     h1 {
-        font-size: 5rem; /* Ajusta el tamaño del título para que no sea demasiado grande */
+        font-size: 5rem;
     }
     .title, .image {
-        width: 100%; /* Hace que tanto el título como la imagen ocupen el ancho completo */
-        height: auto; /* Ajusta la altura automáticamente basada en el contenido */
+        width: 100%; 
+        height: auto;
     }
 }
     @media (max-width: 650px) {
         section {
-        justify-content: center; /* Añade un poco de espacio entre el título y la imagen */
+        justify-content: center;
     }
         h1 {
-        font-size: 4rem; /* Ajusta el tamaño del título para que no sea demasiado grande */
+        font-size: 4rem;
+        
     } }
     @media (max-width: 480px) {
         

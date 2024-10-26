@@ -2,29 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import Introduccion from "../components/Introduction.astro";
 import Vinilos from "../components/Vinilos.astro";
-import Contacto from "../components/Contacto.astro";
-// import Card from '../components/Card.astro';
-import Social from "../components/Social.astro";
-import Bento from "../components/Bento.astro";
-import BentoCard from "../components/BentoCard.astro";
-import { data } from "../data/data";
 ---
 
 <Layout title="Vinilos de corte | Dani Santos">
 	<Introduccion slot="welcomePage" />
 	<main slot="main">
 		<Vinilos/>
-		<Contacto>
-			<Social
-				link="https://www.instagram.com/santos.studi0"
-				logo="/Instagram_3.png"
-			/>
-			<Social
-				link="https://www.linkedin.com/in/danisantos15/"
-				logo="/linkedin.png"
-			/>
-			<Social link="https://github.com/danisntoss" logo="/github.png" />
-		</Contacto>
 	</main>
 </Layout>
 

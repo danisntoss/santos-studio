@@ -1,8 +1,13 @@
 ---
-import Clipboard from "./Clipboard-Icon.astro";
+import Social from "../components/Social.astro";
+import Clipboard from "../components/Clipboard-Icon.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<section id="Contacto">
+<Layout title="Contáctame!">
+    
+    
+<section slot="main" id="Contacto">
   <h1>Contáctame</h1>
   <div class="wrapper">
   <div class="text-section">
@@ -25,10 +30,18 @@ import Clipboard from "./Clipboard-Icon.astro";
     </div>
   </div>
   <div class="socials">
-    <slot />
+    <Social
+        link="https://www.instagram.com/santos.studi0"
+        logo="/Instagram_3.png"
+    />
+    <Social
+        link="https://www.linkedin.com/in/danisantos15/"
+        logo="/linkedin.png"
+    />
+    <Social link="https://github.com/danisntoss" logo="/github.png" />
   </div>
-
 </section>
+</Layout>
 
 <style>
   section {
