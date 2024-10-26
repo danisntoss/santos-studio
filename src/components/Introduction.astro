@@ -1,5 +1,6 @@
 ---
 import Button from './Button.astro';
+import ArrowRightIcon from './icons/ArrowRightIcon.astro';
 ---
 
 
@@ -10,7 +11,13 @@ import Button from './Button.astro';
     <div class="title">
         <h1>Santos Studio.</h1>
         <p>Proyecto personal. Estudio de diseño y corte de vinilo.</p>
-        <Button name='Tengo un proyecto en mente!' link='/contacto'/>
+        <Button
+            type='primary'
+            name='Tengo un proyecto en mente!'
+            link='/contacto'
+        >
+            <ArrowRightIcon color='white'/>
+        </Button>
     </div>
     
 </section>
@@ -30,7 +37,7 @@ import Button from './Button.astro';
     }
     p {
         font-size: 1.5rem;
-        font-weight: 200;
+        font-weight: 400;
         margin-bottom: 30px;
     }
     .title {
