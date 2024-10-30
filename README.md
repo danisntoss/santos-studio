@@ -25,7 +25,7 @@ Este proyecto ha sido desarrollado utilizando [Astro](https://astro.build/), un 
 | Plataforma | Enlace |
 |------------|--------|
 | **GitHub** | [@danisntoss](https://github.com/danisntoss) |
-| **LinkedIn** | [Daniel Santos](https://www.linkedin.com/in/danisantos15/) |
+| **LinkedIn** | [Daniel Santos](https://www.linkedin.com/in/danisntoss/) |
 | **Instagram** | [@santos.studi0](https://www.instagram.com/santos.studi0/) |
 
 ---
