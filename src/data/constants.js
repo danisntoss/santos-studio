@@ -5,7 +5,7 @@ export const CONSTANTS = {
             icon: '/icons/github.svg'
         },
         linkedin: {
-            url: 'https://www.linkedin.com/in/danisantos15/',
+            url: 'https://www.linkedin.com/in/danisntoss/',
             icon: '/icons/linkedin.svg'
         },
         instagram: {
