@@ -3,12 +3,13 @@ interface Props {
     link: string;
     logo: string;
     alt: string;
+    filled?: boolean;
 }
 
-const { link, logo, alt } = Astro.props;
+const { link, logo, alt, filled } = Astro.props;
 ---
 
-  <a target="_blank" href={link} rel="noopener noreferrer">
+  <a target="_blank" href={link} rel="noopener noreferrer" class={filled ? 'filled' : ''}>
     <img src={logo} alt={alt}>
   </a>
 
@@ -30,6 +31,10 @@ const { link, logo, alt } = Astro.props;
         transition: all 0.2s ease-in-out;
     }
 
+    a.filled {
+        background-color: #222;
+    }
+
     img {
         width: 100%;
         height: 100%;
@@ -39,5 +44,9 @@ const { link, logo, alt } = Astro.props;
         background-color: #c1c1c117;
         filter: contrast(2);
     }
-    
+
+    a.filled:hover {
+        background-color: #444;
+        filter: contrast(1.3);
+    }
 </style>

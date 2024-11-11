@@ -1,74 +1,185 @@
 ---
-import Social from "../components/Social.astro";
-import Clipboard from "../components/Clipboard-Icon.astro";
 import Layout from "../layouts/Layout.astro";
+import Clipboard from "../components/Clipboard.astro";
+import Social from "../components/Social.astro";
+import { CONSTANTS } from "../data/constants";
 ---
 
 <Layout title="Contáctame!">
-  <section slot="main" id="Contacto">
-    <div class="wrapper">
-      <div class="text-section">
-        <div class="texto-info">
-          <h1>¡Hola! Soy Dani Santos.</h1>
-          <p>
-            Todo comenzó cuando compré mi primera máquina para cortar vinilos
-            para hacer pegatinas, y lo que empezó como una afición fue creciendo
-            a medida que más personas me pedían sus propios diseños. Con el
-            tiempo, aprendí a usar herramientas como Figma para hacer creaciones
-            más complejas y personalizadas, lo que me permitió llevar mis ideas
-            al siguiente nivel.
-          </p>
-          <p>
-            Así nació este sitio, un espacio donde puedo
-            compartir mi pasión por el diseño y la personalización. ¿Quieres
-            darle un toque único a tus ideas?
-          </p>
-          <p>
-            ¡A qué estás esperando para contarmelas!
-          </p>
-        </div>
+	<section slot="main" id="Contacto" class="wrapper">
+		<div class="text-section">
+			<h1>¡Hola! Soy Dani Santos.</h1>
+			<p>
+				Todo comenzó cuando compré mi primera máquina para cortar
+				vinilos para hacer pegatinas, y lo que empezó como una afición
+				fue creciendo a medida que más personas me pedían sus propios
+				diseños.
+			</p>
+			<p>
+				Con el tiempo, aprendí a usar herramientas como Figma para hacer
+				creaciones más complejas y personalizadas, lo que me permitió
+				llevar mis ideas al siguiente nivel.
+			</p>
+			<p>
+				Así nació este sitio, un espacio donde puedo compartir mi pasión
+				por el diseño y la personalización. ¿Quieres darle un toque
+				único a tus ideas?
+			</p>
+			<p>
+				¡A qué estás esperando para contármelas!
+			</p>
 
-        <div class="informacion-contacto">
-          <span>dani@santos-studio.es</span>
-          <button>
-            <span>Cópiame</span>
-            <Clipboard />
-          </button>
-        </div>
-      </div>
-      <div class="image-section">
-        <img src="/call.png" alt="call-animoji" />
-      </div>
-    </div>
-  </section>
+			<div class="mail-section">
+				<span>dani@santos-studio.es</span>
+				<div class="clipboard-container">
+					<Clipboard />
+				</div>
+			</div>
+		</div>
+		<div class="call-to-action">
+			<div class="image-section">
+				<img src="/call.png" alt="call-animoji" />
+			</div>
+			<hr />
+			<div class="social-links">
+				<Social
+					link={CONSTANTS.socials.email.url}
+					logo={CONSTANTS.socials.email.icon}
+					alt="Email logo"
+					filled
+				/>
+				<Social
+					link={CONSTANTS.socials.instagram.url}
+					logo={CONSTANTS.socials.instagram.icon}
+					alt="Instagram logo"
+					filled
+				/>
+				<Social
+					link={CONSTANTS.socials.github.url}
+					logo={CONSTANTS.socials.github.icon}
+					alt="Github logo"
+					filled
+				/>
+				<Social
+					link={CONSTANTS.socials.linkedin.url}
+					logo={CONSTANTS.socials.linkedin.icon}
+					alt="Linkedin logo"
+					filled
+				/>
+			</div>
+		</div>
+	</section>
 </Layout>
 
 <style>
-  .texto-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    width: 100%;
-    text-align: center;
-  }
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-  }
-  p {
-    margin-bottom: 25px;
-    letter-spacing: 1px;
-    max-width: 900px;
-    line-height: 1.6;
-    font-size: 1.1em;
-  }
+	.wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 16px;
+		gap: 72px;
+		margin-bottom: 50px;
+	}
+
+	.text-section {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		margin-bottom: 20px;
+		width: calc(100% - 400px);
+		max-width: 650px;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		margin-bottom: 30px;
+	}
+
+	p {
+		margin-bottom: 25px;
+		letter-spacing: 1px;
+		max-width: 900px;
+		line-height: 1.6;
+		font-size: 1.1em;
+	}
+
+	hr {
+		width: 100%;
+		max-width: 350px;
+		border: 0.5px solid #22222234;
+		margin: 8px 0;
+	}
+
+	.call-to-action {
+		max-width: 400px;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 30px;
+	}
+
+	.social-links {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 16px;
+	}
+
+	.image-section {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+
+		img {
+			width: 100%;
+			max-width: 350px;
+			background-color: #222;
+			border-radius: 8px;
+		}
+	}
+
+	.mail-section {
+		margin: 32px 0;
+		width: 100%;
+		max-width: 500px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background-color: #222;
+		border-radius: 8px;
+		padding: 10px 20px;
+		gap: 16px;
+
+		span {
+			text-align: center;
+			color: white;
+			font-size: 1.2rem;
+			letter-spacing: 0.5px;
+		}
+
+		.clipboard-container {
+			height: 100%;
+			display: flex;
+			justify-content: flex-end;
+			align-items: flex-start;
+		}
+	}
+
+	@media (max-width: 1000px) {
+		.wrapper {
+			flex-direction: column;
+			gap: 50px;
+		}
+
+		.text-section {
+			width: 100%;
+			align-items: center;
+			text-align: center;
+		}
+		
+	}
 </style>
-<script>
-  function copiarCodigo() {
-    navigator.clipboard.writeText("dani@santos-studio.es");
-    console.log("Copiado");
-  }
-  document.querySelector("button").addEventListener("click", copiarCodigo);
-</script>

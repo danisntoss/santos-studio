@@ -1,0 +1,37 @@
+---
+import ClipboardIcon from "./Clipboard-Icon.astro";
+---
+
+<button>
+    <ClipboardIcon />
+</button>
+
+<style>
+    button {
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        background: none;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+    }
+    
+    button:hover {
+        background-color: #c1c1c117;
+        filter: contrast(2);
+    }
+</style>
+
+<script>
+    function copy() {
+        navigator.clipboard.writeText("dani@santos-studio.es");
+        console.log("Copiado");
+    }
+
+    document.querySelector("button").addEventListener("click", copy);
+</script>
