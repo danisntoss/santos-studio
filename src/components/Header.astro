@@ -16,7 +16,7 @@ import MessageIcon from "./icons/MessageIcon.astro";
 <style>
     header {
         width: 100%;
-        height: var(--nav-height);
+        min-height: var(--nav-height);
         position: fixed;
         top: 0;
         left: 0;
@@ -28,11 +28,12 @@ import MessageIcon from "./icons/MessageIcon.astro";
     nav {
         height: 100%;
         width: 100%;
+        max-width: 1800px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1px 20px;
-        gap: 15px;
+        padding: 8px 16px 8px 16px;
+        gap: 16px;
         background: #fff;
     }
     img {
