@@ -1,0 +1,74 @@
+---
+import Social from "../components/Social.astro";
+import Clipboard from "../components/Clipboard-Icon.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Contáctame!">
+  <section slot="main" id="Contacto">
+    <div class="wrapper">
+      <div class="text-section">
+        <div class="texto-info">
+          <h1>¡Hola! Soy Dani Santos.</h1>
+          <p>
+            Todo comenzó cuando compré mi primera máquina para cortar vinilos
+            para hacer pegatinas, y lo que empezó como una afición fue creciendo
+            a medida que más personas me pedían sus propios diseños. Con el
+            tiempo, aprendí a usar herramientas como Figma para hacer creaciones
+            más complejas y personalizadas, lo que me permitió llevar mis ideas
+            al siguiente nivel.
+          </p>
+          <p>
+            Así nació este sitio, un espacio donde puedo
+            compartir mi pasión por el diseño y la personalización. ¿Quieres
+            darle un toque único a tus ideas?
+          </p>
+          <p>
+            ¡A qué estás esperando para contarmelas!
+          </p>
+        </div>
+
+        <div class="informacion-contacto">
+          <span>dani@santos-studio.es</span>
+          <button>
+            <span>Cópiame</span>
+            <Clipboard />
+          </button>
+        </div>
+      </div>
+      <div class="image-section">
+        <img src="/call.png" alt="call-animoji" />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .texto-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+  p {
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    max-width: 900px;
+    line-height: 1.6;
+    font-size: 1.1em;
+  }
+</style>
+<script>
+  function copiarCodigo() {
+    navigator.clipboard.writeText("dani@santos-studio.es");
+    console.log("Copiado");
+  }
+  document.querySelector("button").addEventListener("click", copiarCodigo);
+</script>

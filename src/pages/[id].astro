@@ -3,21 +3,18 @@ import type { GetStaticPaths } from "astro";
 import { data } from "../data/data";
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+
 const { id } = Astro.params;
-const item = data.find((item) => item.id === id);
-export const getStaticPaths = (() => {
-    const params = data.flatMap((item) => {
-        return {
-            params: {
-                id: item.id,
-                name: item.name,
-                image: item.image,
-                description: item.description,
-            },
-        };
-    });
-    return params;
-}) satisfies GetStaticPaths;
+const datos = data.flat();
+const item = datos.find((item) => item.id === id);
+
+export const getStaticPaths = async () => {
+    const datos = data.flat();
+    const paths = datos.map((item) => ({
+        params: { id: item.id.toString() },
+    }));
+    return paths ;
+};
 ---
 
 <Layout title={item.name}>

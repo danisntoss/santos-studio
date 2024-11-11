@@ -1,19 +1,22 @@
 ---
-// const currentPath = Astro.url.pathname
+import Button from "./Button.astro";
+import MessageIcon from "./icons/MessageIcon.astro";
 ---
 
 <header>
     <nav id="menu">
-        <img src="./instagrampfp.png" alt="" />
-        <a href="/#introduction"><b>Inicio</b></a>
-        <a href="/#Proyectos"><b>Proyectos</b></a>
-        <a href="/#Contacto"><b>Contacto</b></a>
+        <Button type="secondary" link="/">
+            <img src="./instagrampfp.png" alt="Santos Studio Logo" />
+        </Button>
+        <Button type="secondary" name="Hablemos" link="/contacto">
+            <MessageIcon color="black" />
+        </Button>
     </nav>
 </header>
 <style>
     header {
         width: 100%;
-        height: 150px;
+        height: var(--nav-height);
         position: fixed;
         top: 0;
         left: 0;
@@ -23,53 +26,30 @@
         z-index: 10;
     }
     nav {
-        background: #eee;
-        height: 70px;
+        height: 100%;
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 1px 20px;
         gap: 15px;
-        border-radius: 20px;
-        box-shadow: 0 0 10px #0000004d;
+        background: #fff;
     }
-    /* img styles */
     img {
         width: 50px;
     }
 
-    /* a styles */
     a {
         padding: 5px 15px 5px;
         color: black;
         text-decoration: none;
+        transition: all 0.2s ease-in-out;
     }
     a:visited {
         color: inherit;
     }
     a:hover {
-        background-color: var(--col4);
-        border-radius: 4px;
+        transform: translateY(-2px);
+        cursor: pointer;
     }
-@media (max-width: 768px) {
-    nav {
-        flex-direction: row;
-        gap: 10px;
-        padding: 10px;
-    }
-    a {
-        padding: 5px 15px 5px;
-    }
-    img {
-        width: 40px;
-    }
-}
-@media (max-width: 400px) {
-    
-    img {
-        display: none;
-    }
-}
-
-
 </style>

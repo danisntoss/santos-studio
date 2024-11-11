@@ -1,0 +1,97 @@
+---
+interface Props {
+    name?: string;
+    link?: string;
+    type?: "primary" | "secondary" | "special";
+    color?: string;
+    buttonType?: "button" | "submit" | "reset";
+}
+
+const { name, link, type, color, buttonType } = Astro.props;
+---
+
+{
+    link ? (
+        <a href={link} class={`btn ${type}`} rel="noopener noreferrer">
+            <span style={{ color: color }}>{name}</span>
+            <slot />
+        </a>
+    ) : (
+        <button type={buttonType} class={`btn ${type}`}>
+            <span style={{ "color:": color }}>{name}</span>
+            <slot />
+        </button>
+    )
+}
+
+<style>
+    span {
+        color: inherit;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.25rem;
+    }
+
+    .btn {
+        border: 1px solid transparent;
+        border-radius: 5px;
+        padding: 5px 10px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        flex-shrink: 0;
+        min-height: 38px;
+        transition: all 0.3s ease;
+        color: #eee;
+        background: black;
+        text-decoration: none;
+    }
+
+    .btn.primary {
+        background-color: black;
+        color: #fff;
+    }
+
+    .btn.primary:hover {
+        transform: translateX(5px);
+    }
+
+    .btn.secondary {
+        background-color: transparent;
+        color: black;
+    }
+
+    .btn.secondary:hover {
+        transform: translateY(-2px);
+    }
+
+    .btn.special {
+        width: 100%;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(270deg, #ff00ff, #ff69b4, #ff1493, #ff00ff);
+        background-size: 400% 400%;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn.special:hover {
+        animation: pinkGradient 3s ease infinite;
+    }
+
+    @keyframes pinkGradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+</style>
