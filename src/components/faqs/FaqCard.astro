@@ -1,0 +1,75 @@
+---
+interface Props {
+    question: string
+    answer: string
+}
+
+const { question, answer } = Astro.props;
+---
+
+<details>
+    <summary>{question}</summary>
+    <div class="answer">
+        <hr>
+        <p>{answer}</p>
+    </div>
+</details>
+
+<style>
+    details {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    
+    summary {
+        display: block;
+        position: relative;
+        user-select: none;
+        font-size: 1.25rem;
+        font-weight: 500;
+        cursor: pointer;
+        color: #555;
+        padding-left: 2.2rem;
+    }
+    
+    p {
+        margin-top: 1rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #333;
+    }
+
+    hr {
+        margin: 1rem 0;
+        border: none;
+        border-top: 1px solid #eee;
+    }
+
+    details[open] {
+        summary {
+            color: #000;
+        }
+    }
+
+    summary:before {
+        content: "►";
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 1.5rem;
+        transform: rotate(0deg);
+        transition: all 0.3s ease;
+    }
+
+    details[open] > summary:before {
+    transform: rotate(90deg);
+    }
+
+</style>

@@ -1,0 +1,36 @@
+---
+import FaqCard from "./FaqCard.astro"
+import { CONSTANTS } from "../../data/constants"
+---
+
+<section id="faqs">
+    <h1>Preguntas frecuentes</h1>
+    <div class="content">
+        {
+            CONSTANTS.faqs.questions.map(faq => (
+                <FaqCard question={faq.question} answer={faq.answer} />
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+</style>

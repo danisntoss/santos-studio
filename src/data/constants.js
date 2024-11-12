@@ -66,5 +66,25 @@ export const CONSTANTS = {
                 'Tamaño hasta XXL (3000 x 600mm)'
             ]
         },
+    },
+    faqs: {
+        questions: [
+            {
+                question: '¿Qué es el vinilo?',
+                answer: 'El vinilo es un material adhesivo que se utiliza para decorar superficies. Se puede cortar en diferentes formas y colores para crear diseños personalizados.'
+            },
+            {
+                question: '¿Qué tipos de vinilo utilizas?',
+                answer: 'Utilizo vinilo de corte de alta calidad, tanto en acabado mate como en acabado brillante. También dispongo de vinilo reflectante.'
+            },
+            {
+                question: '¿Cómo puedo hacer un pedido?',
+                answer: 'Puedes ponerte en contacto conmigo a través de mis redes sociales o enviándome un correo electrónico a dani@santos-studio.es.'
+            },
+            {
+                question: '¿Puedo hacer un pedido personalizado?',
+                answer: '¡Por supuesto! Cuéntame tu idea y juntos crearemos un diseño único y personalizado.'
+            }
+        ]
     }
 }

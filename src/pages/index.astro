@@ -3,10 +3,12 @@ import Layout from "../layouts/Layout.astro";
 import Introduccion from "../components/Introduction.astro";
 import Vinilos from "../components/Vinilos.astro";
 import Pricings from "../components/pricings/Pricings.astro";
+import Faqs from "../components/faqs/Faqs.astro";
 ---
 
 <Layout title="Vinilos de corte | Dani Santos">
 	<Introduccion slot="hero" />
 	<Vinilos slot="main"/>
 	<Pricings slot="main"/>
+	<Faqs slot="main"/>
 </Layout>
