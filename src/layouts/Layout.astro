@@ -23,8 +23,8 @@ const { title } = Astro.props;
   </head>
   <body>
     <Header />
-    <section>
-      <slot name="welcomePage" />
+    <section class="hero">
+      <slot name="hero" />
     </section>
     <main>
       <slot name="main" />
@@ -66,16 +66,19 @@ const { title } = Astro.props;
     scrollbar-width: thin;
     scrollbar-color: #666 #f7f7f7;
   }
-  section{
+
+  section.hero {
     width: 100%;
     padding-top: var(--nav-height);
   }
+
   body {
     background: var(--bg-color);
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   main {
     width: 100%;
     max-width: 1240px;

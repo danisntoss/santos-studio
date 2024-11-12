@@ -5,7 +5,6 @@ import Bento from "./Bento.astro";
 ---
 
 <section>
-  <main>
     {data.map((bento, bentoIndex) => (
       <Bento key={bentoIndex}>
             <BentoCard
@@ -42,18 +41,50 @@ import Bento from "./Bento.astro";
             />
       </Bento>
     ))}
-  </main>
+    <div class="blur"></div>
 </section>
 
 <style>
   section {
-    gap: 5rem;
     min-height: 100vh;
+    width: 100%;
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    /* mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 10%); */
+  }
+
+  .blur {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
-   
+    height: 120px;
+    mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0, 1) 100%);
+    background-color: rgb(255, 255, 255);
+    z-index: 10;
+    pointer-events: none;
+
+    view-timeline-name: --image;
+    view-timeline-axis: block;
+
+    animation-timeline: --image;
+    animation-name: fadeOut;
+
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+    animation-range: entry 25% cover 30%;
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
 </style>
