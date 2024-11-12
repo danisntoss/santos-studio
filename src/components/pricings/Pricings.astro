@@ -1,0 +1,42 @@
+---
+import PricingCard from "./PricingCard.astro"
+import { CONSTANTS } from "../../data/constants";
+---
+
+<section>
+    <h1>Precios</h1>
+    <div class="grid">
+        <PricingCard data={CONSTANTS.pricings.basic} />
+        <PricingCard data={CONSTANTS.pricings.standard} />
+        <PricingCard data={CONSTANTS.pricings.premium} />
+    </div>
+</section>
+
+<style>
+    section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+    }
+
+    @media (max-width: 1050px) {
+        .grid {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            gap: 3rem;
+        }
+    }
+</style>

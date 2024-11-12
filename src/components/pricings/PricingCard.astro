@@ -1,0 +1,99 @@
+---
+import PricingFeature from './PricingFeature.astro';
+import { CONSTANTS } from '../../data/constants';
+
+interface Props {
+    data: {
+        title: string;
+        icon: string;
+        alt: string;
+        description: string;
+        price: string;
+        features: string[];
+    };
+}
+
+const { data } = Astro.props;
+const featureIcon = CONSTANTS.pricings.commonData.featureIcon;
+---
+
+<div class="card">
+    <div class="title">
+        <img src={data.icon} alt={data.alt} />
+        <h2>{data.title}</h2>
+    </div>
+    <div class="description">
+        <p>{data.description}</p>
+    </div>
+    <div class="content">
+        {
+            data.features.map((feature) => (
+                <PricingFeature title={feature} icon={featureIcon} />
+            ))
+        }
+    </div>
+    <div class="price">
+        <h3>{data.price}</h3>
+    </div>
+</div>
+
+<style>
+    .card {
+        width: 100%;
+        max-width: 500px;
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        align-items:;
+        gap: 2rem;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .title {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        img {
+            --size: 32px;
+            width: var(--size);
+            height: var(--size);
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+    }
+
+    .description {
+        min-height: 100px;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.5;
+        color: #333;
+    }
+    
+    .content {
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .price {
+        height: 64px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+
+        h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            text-align: end;
+        }
+    }
+</style>

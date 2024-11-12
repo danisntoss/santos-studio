@@ -23,5 +23,48 @@ export const CONSTANTS = {
         description: 'Estudio de diseño y corte de vinilo. Trato personalizado y productos de calidad | Daniel Santos',
         keywords: 'Santos Studio, Daniel Santos, Diseño, Vinilo, Corte, Personalizado, Calidad',
         url: 'https://santos-studio.es',
+    },
+    pricings: {
+        commonData: {
+            featureIcon: '/icons/check.svg',
+        },
+        basic: {
+            title: 'Básico',
+            icon: '/icons/basic.svg',
+            alt: 'Basic icon',
+            description: 'Corte de vinilo en vinilo básico con un color sólido a elegir entre una amplia gama de colores.',
+            price: '5€',
+            features: [
+                'Corte de vinilo',
+                'Entrega en mano',
+                'Tamaño S (500 x 600mm)'
+            ]
+        },
+        standard: {
+            title: 'Estándar',
+            icon: '/icons/standard.svg',
+            alt: 'Standard icon',
+            description: 'Diseño y corte de vinilo en vinilo estándar con uno o varios colores a elegir, incluyendo vinilo reflectante.',
+            price: '7€',
+            features: [
+                'Diseño personalizado',
+                'Corte de vinilo',
+                'Entrega en mano',
+                'Tamaño XL (1500 x 600mm)'
+            ]
+        },
+        premium: {
+            title: 'Premium',
+            icon: '/icons/premium.svg',
+            alt: 'Premium icon',
+            description: 'Elige el tamaño que necesites y planearemos un diseño acorde a tus necesidades y gustos.',
+            price: '10€',
+            features: [
+                'Diseño personalizado',
+                'Corte de vinilo',
+                'Envío a domicilio (Península)',
+                'Tamaño hasta XXL (3000 x 600mm)'
+            ]
+        },
     }
 }
