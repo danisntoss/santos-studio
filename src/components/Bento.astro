@@ -31,27 +31,12 @@
         grid-gap: 30px;
     }
 
-    @keyframes show {
-        from {
-            transform: scale(0.75);
-        }
-
-        to {
-            transform: scale(1);
-        }
-    }
-
     .bento-grid-item {
-        /* view-timeline-name: --image;
-        view-timeline-axis: block;
-
-        animation-timeline: --image;
-        animation-name: show;
-
-        animation-duration: 1s;
-        animation-timing-function: ease-out;
-        animation-fill-mode: both;
-        animation-range: entry 25% cover 30%; */
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .bento-grid-item.a {
@@ -75,10 +60,7 @@
     }
     @media (max-width: 1024px) {
         .bento-grid {
-            grid-template-columns: repeat(
-                1,
-                1fr
-            );
+            grid-template-columns: 1fr;
             grid-template-rows: auto;
         }
 
@@ -89,6 +71,7 @@
             grid-column: 1 / -1;
             grid-row: auto;
         }
+
         .bento-grid-item.d {
             margin-bottom: 50px;
         }
