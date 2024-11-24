@@ -33,37 +33,39 @@ export const CONSTANTS = {
             icon: '/icons/basic.svg',
             alt: 'Basic icon',
             description: 'Corte de vinilo en vinilo básico con un color sólido a elegir entre una amplia gama de colores.',
-            price: '5€',
+            price: '3,99€',
             features: [
-                'Corte de vinilo',
-                'Entrega en mano',
-                'Tamaño S (500 x 600mm)'
+                'Logos Pequeños',
+                'Pegatinas de Instagram',
+                'Textos cortos',
+                'Diseños sencillos',
+                'Formas Geométricas'
             ]
         },
         standard: {
             title: 'Estándar',
             icon: '/icons/standard.svg',
             alt: 'Standard icon',
-            description: 'Diseño y corte de vinilo en vinilo estándar con uno o varios colores a elegir, incluyendo vinilo reflectante.',
-            price: '7€',
+            description: 'Diseño y corte de vinilo en vinilo estándar con uno o varios colores a elegir.',
+            price: '15,99€',
             features: [
                 'Diseño personalizado',
-                'Corte de vinilo',
-                'Entrega en mano',
-                'Tamaño XL (1500 x 600mm)'
+                'Opciones multicolor disponibles',
+                'Aplicaciones en interiores y exteriores',
+                'Ideal para vehículos: franjas decorativas, parasoles y detalles únicos',
             ]
         },
         premium: {
             title: 'Premium',
             icon: '/icons/premium.svg',
             alt: 'Premium icon',
-            description: 'Elige el tamaño que necesites y planearemos un diseño acorde a tus necesidades y gustos.',
-            price: '10€',
+            description: 'Perfecto para empresas y grandes proyectos. Diseñemos algo único que encaje con tu marca.',
+            price: '39,99€',
             features: [
                 'Diseño personalizado',
-                'Corte de vinilo',
-                'Envío a domicilio (Península)',
-                'Tamaño hasta XXL (3000 x 600mm)'
+                'Rótulos, escaparates y decoración comercial',
+                'Vinilos de alta calidad y durabilidad superior',
+                'Tamaños XL disponibles (hasta 3000 x 600 mm)',
             ]
         },
     },
@@ -75,7 +77,7 @@ export const CONSTANTS = {
             },
             {
                 question: '¿Qué tipos de vinilo utilizas?',
-                answer: 'Utilizo vinilo de corte de alta calidad, tanto en acabado mate como en acabado brillante. También dispongo de vinilo reflectante.'
+                answer: 'Utilizo vinilo de corte de alta calidad, tanto en acabado mate como en acabado brillante. También dispongo de vinilos cromados y holográficos.'
             },
             {
                 question: '¿Cómo puedo hacer un pedido?',

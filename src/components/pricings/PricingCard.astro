@@ -33,11 +33,15 @@ const featureIcon = CONSTANTS.pricings.commonData.featureIcon;
         }
     </div>
     <div class="price">
+        <span class="initial">Desde</span>
         <h3>{data.price}</h3>
     </div>
 </div>
 
 <style>
+    p{
+        text-wrap: balance;
+    }
     .card {
         width: 100%;
         padding: 32px;
@@ -88,7 +92,14 @@ const featureIcon = CONSTANTS.pricings.commonData.featureIcon;
         display: flex;
         justify-content: flex-end;
         align-items: flex-end;
+        position: relative;
 
+        .initial {
+            font-size: 0.8rem;
+            color: #333;
+            position: absolute;
+            top: -5px;
+        }
         h3 {
             font-size: 2rem;
             color: var(--primary);
