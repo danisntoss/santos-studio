@@ -59,17 +59,17 @@ const { question, answer } = Astro.props;
     }
 
     summary:before {
-        content: "►";
+        content: "✧";
         position: absolute;
         left: 0;
         top: 0;
         font-size: 1.5rem;
-        transform: rotate(0deg);
         transition: all 0.3s ease;
     }
 
     details[open] > summary:before {
-    transform: rotate(90deg);
+        content: "✦";
+        transform: rotate(90deg) translate(2px, -2px);
     }
 
 </style>
