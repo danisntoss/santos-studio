@@ -3,17 +3,17 @@ import Swiper from './Swiper.astro';
 
 interface Props {
     title: string;
-    image: string;
+    images: string[];
     url: string;
     description: string;
     tags: string[];
 }
 
-const { title, image, url, tags, description } = Astro.props;
+const { title, images, url, tags, description } = Astro.props;
 ---
 
-<a href={url} class="bento-card">
-    <Swiper images={[image, image, image, image]} />
+<div class="bento-card">
+    <Swiper images={images} />
     <div class="text-info">
         <div class="title-container">
             <h3>{title}</h3>
@@ -23,7 +23,7 @@ const { title, image, url, tags, description } = Astro.props;
             <span class="tag price">{tags[1]}</span>
         </div>
     </div>
-</a>
+</div>
 
 <style>
     a {
