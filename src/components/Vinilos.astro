@@ -8,35 +8,35 @@ import Bento from "./Bento.astro";
     {data.map((bento, bentoIndex) => (
       <Bento key={bentoIndex}>
             <BentoCard
-              key={bento[0].id}
               url={`/${bento[0].id}`}
               title={bento[0].name}
               image={bento[0].image}
               description={bento[0].description}
+              tags={bento[0].tags}
               slot="slot1" 
             />
             <BentoCard
-              key={bento[1].id}
               url={`/${bento[1].id}`}
               title={bento[1].name}
               image={bento[1].image}
               description={bento[1].description}
+              tags={bento[1].tags}
               slot="slot2" 
             />
             <BentoCard
-              key={bento[2].id}
               url={`/${bento[2].id}`}
               title={bento[2].name}
               image={bento[2].image}
               description={bento[2].description}
+              tags={bento[2].tags}
               slot="slot3"
             />
             <BentoCard
-              key={bento[3].id}
               url={`/${bento[3].id}`}
               title={bento[3].name}
               image={bento[3].image}
               description={bento[3].description}
+              tags={bento[3].tags}
               slot="slot4" 
             />
       </Bento>
