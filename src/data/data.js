@@ -76,7 +76,7 @@ export const data = [[
             "/imgs/bowling/1.jpeg",
         ],
         description: "Creado para una papelería, con el fin de personalizar su furgoneta de reparto.",
-        tags: ["logo", "Estándar"]
+        tags: ["Logo", "Estándar"]
     },
     {
         id: "8",
