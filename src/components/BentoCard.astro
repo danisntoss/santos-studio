@@ -1,4 +1,6 @@
 ---
+import Swiper from './Swiper.astro';
+
 interface Props {
     title: string;
     image: string;
@@ -11,7 +13,7 @@ const { title, image, url, tags, description } = Astro.props;
 ---
 
 <a href={url} class="bento-card">
-    <img src={image} alt={title} />
+    <Swiper images={[image, image, image, image]} />
     <div class="text-info">
         <div class="title-container">
             <h3>{title}</h3>
