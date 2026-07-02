@@ -28,7 +28,7 @@ export const data = [[
             "/imgs/plazuela/3.jpeg",
             "/imgs/plazuela/4.jpeg",
         ],
-        description: "Creado para una papelería, con el fin de personalizar su furgoneta de reparto.",
+        description: "Rediseño y corte del cartel de la fachada para darle una vuelta a la imagen del local.",
         tags: ["Cartel", "Premium"]
     },
     {
@@ -54,8 +54,8 @@ export const data = [[
             "/imgs/exteriorplus/1.jpeg",
             "/imgs/exteriorplus/2.jpeg",
         ],
-        description: "Diseñado y cortado para arreglar el antiguo cartel que tenían puesto en la fachada.",
-        tags: ["Cartel", "Estándar"]
+        description: "Rotulación corporativa cortada en vinilo estándar para los vehículos de la empresa.",
+        tags: ["Vehículos de empresa", "Estándar"]
     },
     {
         id: "6",
@@ -66,7 +66,7 @@ export const data = [[
             "/imgs/kawasaki/3.jpeg",
             "/imgs/kawasaki/4.jpeg",
         ],
-        description: "Creado para una furgoneta de la empresa.",
+        description: "Vinilos a medida para darle personalidad a la moto de un amigo.",
         tags: ["Moto", "Estándar"]
     },
     {
@@ -75,8 +75,8 @@ export const data = [[
         images: [
             "/imgs/bowling/1.jpeg",
         ],
-        description: "Creado para una papelería, con el fin de personalizar su furgoneta de reparto.",
-        tags: ["Logo", "Estándar"]
+        description: "Grafismo y numeración de las pistas de la bolera de Chamartín.",
+        tags: ["Interior", "Estándar"]
     },
     {
         id: "8",
@@ -86,8 +86,8 @@ export const data = [[
             "/imgs/glovo/2.jpeg",
 
         ],
-        description: "Diseñado y cortado para personalizar este Civic.",
-        tags: ["Cartel", "Premium"]
+        description: "Rotulación a medida cortada en vinilo premium para los vehículos de reparto.",
+        tags: ["Vehículos de empresa", "Premium"]
     },
 ]
 ]
