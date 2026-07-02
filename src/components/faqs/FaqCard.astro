@@ -1,75 +1,88 @@
 ---
 interface Props {
-    question: string
-    answer: string
+    question: string;
+    answer: string;
+    index?: number;
 }
 
-const { question, answer } = Astro.props;
+const { question, answer, index } = Astro.props;
+const idx = typeof index === "number" ? String(index).padStart(2, "0") : "";
 ---
 
-<details>
-    <summary>{question}</summary>
+<details class="faq">
+    <summary>
+        {idx && <span class="mono idx">{idx}</span>}
+        <span class="q">{question}</span>
+        <span class="chev" aria-hidden="true">+</span>
+    </summary>
     <div class="answer">
-        <hr>
         <p>{answer}</p>
     </div>
 </details>
 
 <style>
-    details {
+    .faq {
         width: 100%;
-        padding: 1rem;
-        border-radius: 10px;
-        background: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-        overflow: hidden;
-        transition: all 0.3s ease;
+        border-bottom: 1px solid var(--line-soft);
+        padding: 20px 4px;
+        transition: background 0.2s ease;
+    }
+    .faq[open] {
+        background: rgba(127, 179, 255, 0.03);
     }
 
-    
     summary {
-        display: block;
-        position: relative;
-        user-select: none;
-        font-size: 1.25rem;
-        font-weight: 500;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 16px;
+        align-items: center;
         cursor: pointer;
-        color: #555;
-        padding-left: 2.2rem;
+        list-style: none;
+        user-select: none;
     }
-    
-    p {
-        margin-top: 1rem;
-        font-size: 1rem;
-        line-height: 1.5;
-        color: #333;
+    summary::-webkit-details-marker {
+        display: none;
     }
 
-    hr {
-        margin: 1rem 0;
-        border: none;
-        border-top: 1px solid #eee;
+    .idx {
+        color: var(--accent);
     }
 
-    details[open] {
+    .q {
+        font-size: 1.15rem;
+        font-weight: 500;
+        color: var(--paper);
+        letter-spacing: -0.005em;
+    }
+
+    .chev {
+        font-family: var(--font-mono);
+        font-size: 1.3rem;
+        color: var(--paper-dim);
+        line-height: 1;
+        width: 20px;
+        text-align: center;
+        transition: transform 0.25s ease, color 0.25s ease;
+    }
+    .faq[open] .chev {
+        transform: rotate(45deg);
+        color: var(--accent);
+    }
+
+    .answer {
+        padding: 14px 0 4px 44px;
+        color: var(--paper-dim);
+        line-height: 1.6;
+        max-width: 780px;
+    }
+
+    @media (max-width: 640px) {
         summary {
-            color: #000;
+            grid-template-columns: auto 1fr auto;
+            gap: 12px;
+        }
+        .answer {
+            padding-left: 32px;
         }
     }
-
-    summary:before {
-        content: "✧";
-        position: absolute;
-        left: 0;
-        top: 0;
-        font-size: 1.5rem;
-        transition: all 0.3s ease;
-    }
-
-    details[open] > summary:before {
-        content: "✦";
-        transform: rotate(90deg);
-    }
-
 </style>

@@ -2,36 +2,59 @@
 import ClipboardIcon from "./Clipboard-Icon.astro";
 ---
 
-<button>
+<button type="button" class="clipboard" data-clipboard aria-label="Copiar email">
     <ClipboardIcon />
+    <span class="mono" data-clipboard-label>Copiar</span>
 </button>
 
 <style>
-    button {
-        padding: 12px;
-        display: flex;
+    .clipboard {
+        display: inline-flex;
         align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        background: none;
-        border: 1px solid transparent;
-        border-radius: 5px;
-        font-size: 1.5rem;
+        gap: 8px;
+        padding: 8px 12px;
+        background: transparent;
+        border: 1px solid var(--line-soft);
+        border-radius: 3px;
+        color: var(--paper-dim);
         cursor: pointer;
-        transition: all 0.2s ease-in-out;
+        transition: color 0.2s ease, border-color 0.2s ease;
     }
-    
-    button:hover {
-        background-color: #c1c1c117;
-        filter: contrast(2);
+
+    .clipboard:hover {
+        color: var(--paper);
+        border-color: var(--paper);
+    }
+
+    .clipboard :global(svg) {
+        width: 16px;
+        height: 16px;
+    }
+    .clipboard :global(svg path) {
+        stroke: currentColor;
+    }
+
+    .clipboard.copied {
+        color: var(--accent);
+        border-color: var(--accent);
     }
 </style>
 
 <script>
-    function copy() {
-        navigator.clipboard.writeText("dani@santos-studio.es");
-        console.log("Copiado");
-    }
-
-    document.querySelector("button").addEventListener("click", copy);
+    document.querySelectorAll<HTMLButtonElement>("[data-clipboard]").forEach((btn) => {
+        const label = btn.querySelector<HTMLElement>("[data-clipboard-label]");
+        btn.addEventListener("click", async () => {
+            try {
+                await navigator.clipboard.writeText("dani@santos-studio.es");
+                btn.classList.add("copied");
+                if (label) label.textContent = "Copiado";
+                setTimeout(() => {
+                    btn.classList.remove("copied");
+                    if (label) label.textContent = "Copiar";
+                }, 1600);
+            } catch (err) {
+                console.error(err);
+            }
+        });
+    });
 </script>

@@ -1,37 +1,75 @@
 ---
-import FaqCard from "./FaqCard.astro"
-import { CONSTANTS } from "../../data/constants"
+import FaqCard from "./FaqCard.astro";
+import { CONSTANTS } from "../../data/constants";
 ---
 
-<section id="faqs">
-    <h1>Preguntas frecuentes</h1>
+<section id="faqs" class="faqs">
+    <header class="section-head">
+        <div class="labels">
+            <span class="mono">ss/04 · faq</span>
+            <span class="mono num">{String(CONSTANTS.faqs.questions.length).padStart(2, "0")} preguntas</span>
+        </div>
+        <h2>Preguntas frecuentes.</h2>
+        <p>Lo que la gente me pregunta más a menudo antes de encargar.</p>
+    </header>
+
     <div class="content">
         {
-            CONSTANTS.faqs.questions.map(faq => (
-                <FaqCard question={faq.question} answer={faq.answer} />
+            CONSTANTS.faqs.questions.map((faq, i) => (
+                <FaqCard
+                    index={i + 1}
+                    question={faq.question}
+                    answer={faq.answer}
+                />
             ))
         }
     </div>
 </section>
 
 <style>
-    section {
+    .faqs {
         width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
         gap: 3rem;
     }
 
-    h1 {
-        font-size: 3rem;
-        text-align: center;
+    .section-head {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 720px;
+    }
+
+    .labels {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid var(--line-soft);
+        border-bottom: 1px solid var(--line-soft);
+        padding: 8px 0;
+        color: var(--paper-dim);
+    }
+    .labels .num {
+        color: var(--accent);
+    }
+
+    h2 {
+        font-size: clamp(2rem, 5vw, 3.4rem);
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        line-height: 1;
+    }
+
+    p {
+        color: var(--paper-dim);
+        max-width: 540px;
     }
 
     .content {
-        width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 0;
+        border-top: 1px solid var(--line-soft);
     }
 </style>

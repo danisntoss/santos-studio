@@ -1,65 +1,90 @@
 ---
-import Social from "./Social.astro"
-import Button from "./Button.astro"
-import { CONSTANTS } from "../data/constants"
+import Social from "./Social.astro";
+import { CONSTANTS } from "../data/constants";
 
-const year = new Date().getFullYear()
+const year = new Date().getFullYear();
 ---
 
 <footer>
     <div class="content">
-        
-        <Button
-            link="#"
-            name={`© ${year} | ${CONSTANTS.webdata.title}`}
-            type="secondary"
-            color="#f7f7f7"
-        />
-        <div class="socials">
-            <Social
-                link={CONSTANTS.socials.email.url}
-                logo={CONSTANTS.socials.email.icon}
-                alt="Email"
-            />
-            <Social
-                link={CONSTANTS.socials.instagram.url}
-                logo={CONSTANTS.socials.instagram.icon}
-                alt="Instagram"
-            />
-            <Social
-                link={CONSTANTS.socials.github.url}
-                logo={CONSTANTS.socials.github.icon}
-                alt="Github"
-            />
-            <Social
-                link={CONSTANTS.socials.linkedin.url}
-                logo={CONSTANTS.socials.linkedin.icon}
-                alt="Linkedin"
-            />
+        <div class="row top">
+            <div class="brand-block">
+                <span class="brand-name">Santos Studio.</span>
+                <span class="mono">Diseño · corte · vinilo</span>
+            </div>
+            <div class="socials">
+                <Social
+                    link={CONSTANTS.socials.email.url}
+                    logo={CONSTANTS.socials.email.icon}
+                    alt="Email"
+                />
+                <Social
+                    link={CONSTANTS.socials.instagram.url}
+                    logo={CONSTANTS.socials.instagram.icon}
+                    alt="Instagram"
+                />
+                <Social
+                    link={CONSTANTS.socials.github.url}
+                    logo={CONSTANTS.socials.github.icon}
+                    alt="Github"
+                />
+                <Social
+                    link={CONSTANTS.socials.linkedin.url}
+                    logo={CONSTANTS.socials.linkedin.icon}
+                    alt="Linkedin"
+                />
+            </div>
+        </div>
+        <div class="row bottom">
+            <span class="mono">© {year} · {CONSTANTS.webdata.author}</span>
+            <span class="mono">SS/2026 · Rev.1</span>
         </div>
     </div>
 </footer>
 
 <style>
     footer {
-        --height: 150px;
-        margin-top: calc(var(--height) / 3);
         width: 100%;
-        height: var(--height);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 15px;
-        background-color: #1E1E1E;
+        margin-top: 4rem;
+        padding: 40px 24px 24px;
+        border-top: 1px solid var(--line-soft);
+        background: var(--ink);
     }
-    
+
     .content {
         width: 100%;
-        max-width: 1100px;
-        height: 100%;
+        max-width: 1240px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .row {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .row.bottom {
+        border-top: 1px solid var(--line-soft);
+        padding-top: 16px;
+        color: var(--paper-dim);
+    }
+
+    .brand-block {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .brand-name {
+        font-family: var(--font-display);
+        font-size: 1.35rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--paper);
     }
 
     .socials {
@@ -67,17 +92,10 @@ const year = new Date().getFullYear()
         gap: 10px;
     }
 
-    span, a {
-        text-decoration: none;
-        text-align: center;
-        color: #f7f7f7;
-        font-weight: 500;
-    }
-
     @media (max-width: 600px) {
-        .content {
+        .row.top {
             flex-direction: column;
-            justify-content: center;
+            align-items: flex-start;
             gap: 20px;
         }
     }

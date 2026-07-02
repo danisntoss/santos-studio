@@ -8,28 +8,27 @@ const { title, icon } = Astro.props;
 ---
 
 <div class="feature">
-    <img src={icon} alt={title} />
+    <span class="mark" aria-hidden="true">+</span>
     <span>{title}</span>
 </div>
 
 <style>
     .feature {
-        min-height: 32px;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-
-        img {
-            --size: 24px;
-            width: var(--size);
-            height: var(--size);
-        }
-
-        span {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #333;
-            line-height: 1.6;
-        }
+        gap: 10px;
+    }
+    .mark {
+        font-family: var(--font-mono);
+        color: var(--accent);
+        font-weight: 600;
+        line-height: 1;
+        width: 16px;
+        text-align: center;
+    }
+    span:not(.mark) {
+        font-size: 0.95rem;
+        color: var(--paper);
+        line-height: 1.55;
     }
 </style>

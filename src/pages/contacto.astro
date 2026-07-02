@@ -5,181 +5,224 @@ import Social from "../components/Social.astro";
 import { CONSTANTS } from "../data/constants";
 ---
 
-<Layout title="Contáctame!">
+<Layout title="Contáctame · Santos Studio">
 	<section slot="main" id="Contacto" class="wrapper">
 		<div class="text-section">
-			<h1>¡Hola! Soy Dani Santos.</h1>
+			<div class="mono eyebrow">
+				<span class="dot"></span> Contacto · ss/05
+			</div>
+			<h1>¡Hola! Soy <span class="accent">Dani Santos</span>.</h1>
 			<p>
-				Todo comenzó cuando compré mi primera máquina para cortar
-				vinilos para hacer pegatinas, y lo que empezó como una afición
-				fue creciendo a medida que más personas me pedían sus propios
-				diseños.
+				Todo empezó cuando compré mi primera máquina de corte de vinilo
+				para hacer pegatinas por hobby. La cosa se fue de las manos:
+				la gente empezó a pedirme diseños y aquí seguimos.
 			</p>
 			<p>
-				Con el tiempo, aprendí a usar herramientas como Figma para hacer
-				creaciones más complejas y personalizadas, lo que me permitió
-				llevar mis ideas al siguiente nivel.
+				Con el tiempo aprendí Illustrator y Figma, y ya me manejo
+				con proyectos más grandes: rótulos, escaparates, coches enteros.
+				Todo cortado y montado por mí.
 			</p>
 			<p>
-				Así nació este sitio, un espacio donde puedo compartir mi pasión
-				por el diseño y la personalización. ¿Quieres darle un toque
-				único a tus ideas?
-			</p>
-			<p>
-				¡A qué estás esperando para contármelas!
+				Si tienes una idea rondando la cabeza — desde una pegatina
+				para el portátil hasta un vinilo integral — cuéntamela y
+				la ponemos en marcha.
 			</p>
 
 			<div class="mail-section">
-				<span>dani@santos-studio.es</span>
+				<span class="mono">EMAIL</span>
+				<span class="mail">dani@santos-studio.es</span>
 				<div class="clipboard-container">
 					<Clipboard />
 				</div>
 			</div>
 		</div>
-		<div class="call-to-action">
+		<aside class="call-to-action">
 			<div class="image-section">
-				<img src="/contact.png" alt="call-animoji" />
+				<div class="corner tl"></div>
+				<div class="corner tr"></div>
+				<div class="corner bl"></div>
+				<div class="corner br"></div>
+				<img src="/contact.png" alt="Ilustración de contacto" />
+				<span class="mono tag">FIG · 01</span>
 			</div>
-			<hr />
 			<div class="social-links">
 				<Social
 					link={CONSTANTS.socials.email.url}
 					logo={CONSTANTS.socials.email.icon}
-					alt="Email logo"
+					alt="Email"
 					filled
 				/>
 				<Social
 					link={CONSTANTS.socials.instagram.url}
 					logo={CONSTANTS.socials.instagram.icon}
-					alt="Instagram logo"
+					alt="Instagram"
 					filled
 				/>
 				<Social
 					link={CONSTANTS.socials.github.url}
 					logo={CONSTANTS.socials.github.icon}
-					alt="Github logo"
+					alt="Github"
 					filled
 				/>
 				<Social
 					link={CONSTANTS.socials.linkedin.url}
 					logo={CONSTANTS.socials.linkedin.icon}
-					alt="Linkedin logo"
+					alt="Linkedin"
 					filled
 				/>
 			</div>
-		</div>
+		</aside>
 	</section>
 </Layout>
 
 <style>
 	.wrapper {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 0 16px;
-		gap: 72px;
-		margin-bottom: 50px;
+		width: 100%;
+		display: grid;
+		grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+		align-items: start;
+		gap: 64px;
+		padding-top: 24px;
 	}
 
 	.text-section {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: flex-start;
-		margin-bottom: 20px;
-		width: calc(100% - 400px);
-		max-width: 650px;
+		gap: 20px;
+	}
+
+	.eyebrow {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		color: var(--paper-dim);
+	}
+	.eyebrow .dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--accent);
+		box-shadow: 0 0 10px var(--accent);
 	}
 
 	h1 {
-		font-size: 2.5rem;
-		margin-bottom: 30px;
+		font-size: clamp(2.2rem, 5vw, 3.6rem);
+		font-weight: 600;
+		letter-spacing: -0.03em;
+		line-height: 1.05;
+		margin-bottom: 8px;
+	}
+	.accent {
+		color: var(--accent);
 	}
 
 	p {
-		margin-bottom: 25px;
-		letter-spacing: 1px;
-		max-width: 900px;
-		line-height: 1.6;
-		font-size: 1.1em;
+		color: var(--paper-dim);
+		font-size: 1.05rem;
+		line-height: 1.65;
+		max-width: 620px;
 	}
 
-	hr {
-		width: 100%;
-		max-width: 350px;
-		border: 0.5px solid #22222234;
-		margin: 8px 0;
+	.mail-section {
+		margin-top: 20px;
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		padding: 14px 18px;
+		border: 1px solid var(--line-soft);
+		border-radius: 4px;
+		background: var(--ink-2);
+	}
+	.mail-section .mono {
+		color: var(--paper-dim);
+	}
+	.mail {
+		flex: 1;
+		font-family: var(--font-display);
+		color: var(--paper);
+		font-size: 1.05rem;
+		letter-spacing: 0.01em;
+	}
+	.clipboard-container {
+		display: flex;
 	}
 
 	.call-to-action {
-		max-width: 400px;
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		gap: 30px;
+		align-items: stretch;
+		gap: 24px;
+		position: sticky;
+		top: 96px;
+	}
+
+	.image-section {
+		position: relative;
+		padding: 18px;
+		border: 1px solid var(--line-soft);
+		background: var(--ink-2);
+		border-radius: 4px;
+	}
+	.image-section img {
+		width: 100%;
+		display: block;
+		border-radius: 3px;
+	}
+	.image-section .tag {
+		position: absolute;
+		bottom: 26px;
+		left: 26px;
+		color: var(--paper);
+		background: rgba(10, 22, 66, 0.7);
+		padding: 3px 8px;
+		border: 1px solid var(--line-soft);
+		border-radius: 2px;
+	}
+	.corner {
+		position: absolute;
+		width: 14px;
+		height: 14px;
+		border-color: var(--paper-dim);
+		opacity: 0.7;
+	}
+	.corner.tl {
+		top: 6px;
+		left: 6px;
+		border-top: 1px solid;
+		border-left: 1px solid;
+	}
+	.corner.tr {
+		top: 6px;
+		right: 6px;
+		border-top: 1px solid;
+		border-right: 1px solid;
+	}
+	.corner.bl {
+		bottom: 6px;
+		left: 6px;
+		border-bottom: 1px solid;
+		border-left: 1px solid;
+	}
+	.corner.br {
+		bottom: 6px;
+		right: 6px;
+		border-bottom: 1px solid;
+		border-right: 1px solid;
 	}
 
 	.social-links {
 		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 16px;
+		gap: 10px;
 	}
 
-	.image-section {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-
-		img {
-			width: 100%;
-			max-width: 350px;
-			background-color: #222;
-			border-radius: 8px;
-		}
-	}
-
-	.mail-section {
-		margin: 32px 0;
-		width: 100%;
-		max-width: 500px;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		background-color: #222;
-		border-radius: 8px;
-		padding: 10px 20px;
-		gap: 16px;
-
-		span {
-			text-align: center;
-			color: white;
-			font-size: 1.2rem;
-			letter-spacing: 0.5px;
-		}
-
-		.clipboard-container {
-			height: 100%;
-			display: flex;
-			justify-content: flex-end;
-			align-items: flex-start;
-		}
-	}
-
-	@media (max-width: 1000px) {
+	@media (max-width: 900px) {
 		.wrapper {
-			flex-direction: column;
-			gap: 50px;
+			grid-template-columns: 1fr;
+			gap: 40px;
 		}
-
-		.text-section {
-			width: 100%;
-			align-items: center;
-			text-align: center;
+		.call-to-action {
+			position: static;
 		}
-		
 	}
 </style>

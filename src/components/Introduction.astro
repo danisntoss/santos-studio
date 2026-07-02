@@ -1,73 +1,321 @@
 ---
 import Button from "./Button.astro";
+import Logo from "./Logo.astro";
 import ArrowRightIcon from "./icons/ArrowRightIcon.astro";
 ---
 
-<section id="introduction">
-    <div class="image">
-        <img src="/logo.svg" alt="santos.studio-logo" />
+<section id="introduction" class="hero-frame">
+    <div class="frame-top">
+        <span class="mono">SANTOS.STUDIO / 001</span>
+        <span class="mono">MADRID · ESP</span>
+        <span class="mono">EST · 2022</span>
     </div>
-    <div class="title">
-        <h1>Santos Studio.</h1>
-        <p>Proyecto personal. Estudio de diseño y corte de vinilo.</p>
-        <Button
-            type="primary"
-            name="Tengo un proyecto en mente!"
-            link="/contacto"
-        >
-            <ArrowRightIcon color="white" />
-        </Button>
+
+    <div class="stage">
+        <div class="mark tl" aria-hidden="true"></div>
+        <div class="mark tr" aria-hidden="true"></div>
+        <div class="mark bl" aria-hidden="true"></div>
+        <div class="mark br" aria-hidden="true"></div>
+
+        <div class="title">
+            <span class="mono eyebrow">
+                <span class="dot"></span> Estudio de diseño y corte de vinilo
+            </span>
+            <h1>
+                <span class="line">Santos</span>
+                <span class="line accent">Studio<span class="dot-mark" aria-hidden="true"><Logo size={72} class="dot-logo" /></span></span>
+            </h1>
+            <p class="lead">
+                Diseño rótulos, adhesivos y decoración de vehículos.
+                Del boceto al vinilo, cortado y montado a mano.
+            </p>
+            <div class="actions">
+                <Button
+                    type="primary"
+                    name="Cuéntame tu proyecto"
+                    link="/contacto"
+                >
+                    <ArrowRightIcon color="currentColor" />
+                </Button>
+                <a href="#vinilos" class="ghost">
+                    <span class="mono">Ver trabajos</span>
+                    <span aria-hidden="true">↓</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="frame-bottom">
+        <span class="mono">SCALE 1:1</span>
+        <span class="mono">SHEET SS/01</span>
+        <span class="mono">REV. 2026</span>
     </div>
 </section>
+
 <style>
-    section {
+    .hero-frame {
+        position: relative;
+        width: 100%;
+        min-height: calc(100vh - var(--nav-height));
+        padding: 48px 64px 64px;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        gap: 24px;
+    }
+
+    .frame-top,
+    .frame-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 0 24px;
+        position: relative;
+    }
+
+    .frame-top::before,
+    .frame-top::after,
+    .frame-bottom::before,
+    .frame-bottom::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        height: 1px;
+        background: var(--line-soft);
+    }
+    .frame-top::before,
+    .frame-bottom::before {
+        left: 0;
+        right: calc(100% - 16px);
+    }
+    .frame-top::after,
+    .frame-bottom::after {
+        right: 0;
+        left: calc(100% - 16px);
+    }
+
+    .stage {
+        position: relative;
         display: flex;
         align-items: center;
-        flex-direction: column;
         justify-content: center;
-        text-align: center;
-        width: 100%;
-        min-height: 75vh;
-        animation: inAnimation 1s ease-out;
+        padding: 24px;
+        animation: fadeUp 0.9s ease-out both;
     }
 
-    h1 {
-        font-size: 5rem;
+    .mark {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        border-color: var(--line);
+        opacity: 0.55;
     }
-
-    p {
-        font-size: 1.5rem;
-        font-weight: 400;
-        margin-bottom: 30px;
+    .mark.tl {
+        top: 0;
+        left: 0;
+        border-top: 1px solid;
+        border-left: 1px solid;
+    }
+    .mark.tr {
+        top: 0;
+        right: 0;
+        border-top: 1px solid;
+        border-right: 1px solid;
+    }
+    .mark.bl {
+        bottom: 0;
+        left: 0;
+        border-bottom: 1px solid;
+        border-left: 1px solid;
+    }
+    .mark.br {
+        bottom: 0;
+        right: 0;
+        border-bottom: 1px solid;
+        border-right: 1px solid;
     }
 
     .title {
-        width: 100%;
-        padding: 0 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 0.7rem;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
     }
 
-    .image {
-        display: flex;
+    .eyebrow {
+        display: inline-flex;
         align-items: center;
-        justify-content: center;
+        gap: 10px;
+        color: var(--paper-dim);
+        margin-bottom: 24px;
+    }
+    .eyebrow .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 12px var(--accent);
+    }
+
+    h1 {
+        font-family: var(--font-display);
+        font-size: clamp(3.5rem, 11vw, 8.5rem);
+        line-height: 0.92;
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        margin: 8px 0 24px;
+        text-align: center;
+    }
+    h1 .line {
+        display: block;
+    }
+    h1 .accent {
+        color: var(--paper);
+    }
+
+    .dot-mark {
+        display: inline-block;
+        width: 0.24em;
+        height: 0.24em;
+        margin-left: 0.02em;
+        vertical-align: baseline;
+        line-height: 0;
+        transform-origin: 50% 100%;
+        animation: dot-arrive 2s cubic-bezier(0.33, 1, 0.68, 1) 0.4s both;
+    }
+
+    :global(.dot-logo) {
         width: 100%;
-        img {
-            width: 120px;
-            filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.1));
+        height: 100%;
+        display: block;
+        filter: drop-shadow(0 4px 14px rgba(255, 91, 58, 0.45));
+    }
+
+    .lead {
+        max-width: 540px;
+        margin: 0 auto 24px;
+        color: var(--paper-dim);
+        font-size: 1.1rem;
+        line-height: 1.55;
+    }
+
+    .actions {
+        display: inline-flex;
+        align-items: center;
+        gap: 24px;
+        margin-top: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .ghost {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--paper-dim);
+        text-decoration: none;
+        padding: 8px 4px;
+        transition: color 0.2s ease;
+    }
+    .ghost:hover {
+        color: var(--paper);
+    }
+
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
     }
 
-    @keyframes inAnimation {
+    @keyframes dot-arrive {
         0% {
-            transform: translateY(50px);
+            transform: translate(60vw, 0) rotate(-720deg) scale(1, 1);
+            opacity: 0;
+        }
+        4% {
+            opacity: 1;
+        }
+        12% {
+            transform: translate(48vw, -1.6em) rotate(-620deg) scale(0.94, 1.06);
+        }
+        22% {
+            transform: translate(36vw, 0) rotate(-520deg) scale(1.18, 0.82);
+        }
+        32% {
+            transform: translate(26vw, -1em) rotate(-420deg) scale(0.96, 1.04);
+        }
+        42% {
+            transform: translate(18vw, 0) rotate(-330deg) scale(1.12, 0.88);
+        }
+        54% {
+            transform: translate(11vw, -0.5em) rotate(-230deg) scale(0.98, 1.02);
+        }
+        64% {
+            transform: translate(6vw, 0) rotate(-160deg) scale(1.06, 0.94);
+        }
+        74% {
+            transform: translate(3vw, -0.22em) rotate(-100deg) scale(0.99, 1.01);
+        }
+        84% {
+            transform: translate(1.2vw, 0) rotate(-50deg) scale(1.03, 0.97);
+        }
+        92% {
+            transform: translate(0.3vw, -0.08em) rotate(-16deg) scale(1, 1);
         }
         100% {
-            transform: translateY(0);
+            transform: translate(0, 0) rotate(0) scale(1, 1);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .dot-mark {
+            animation: none !important;
+        }
+    }
+
+</style>
+
+<style is:global>
+    .dot-logo ellipse,
+    .dot-logo path {
+        animation: dot-settle 0.7s ease-out 5.4s both;
+    }
+
+    @keyframes dot-settle {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .dot-logo ellipse,
+        .dot-logo path {
+            animation: none !important;
+            opacity: 0;
+        }
+    }
+</style>
+
+<style>
+    @media (max-width: 768px) {
+        .hero-frame {
+            padding: 32px 20px 40px;
+        }
+        .frame-top,
+        .frame-bottom {
+            padding: 0 8px;
+            font-size: 0.6rem;
+        }
+        .actions {
+            flex-direction: column;
+            gap: 16px;
         }
     }
 </style>

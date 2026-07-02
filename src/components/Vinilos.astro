@@ -2,89 +2,100 @@
 import { data } from "../data/data";
 import BentoCard from "./BentoCard.astro";
 import Bento from "./Bento.astro";
+
+const projects = data.flat();
 ---
 
-<section>
-    {data.map((bento, bentoIndex) => (
-      <Bento key={bentoIndex}>
-            <BentoCard
-              url={`/${bento[0].id}`}
-              title={bento[0].name}
-              images={bento[0].images}
-              description={bento[0].description}
-              tags={bento[0].tags}
-              slot="slot1" 
-            />
-            <BentoCard
-              url={`/${bento[1].id}`}
-              title={bento[1].name}
-              images={bento[1].images}
-              description={bento[1].description}
-              tags={bento[1].tags}
-              slot="slot2" 
-            />
-            <BentoCard
-              url={`/${bento[2].id}`}
-              title={bento[2].name}
-              images={bento[2].images}
-              description={bento[2].description}
-              tags={bento[2].tags}
-              slot="slot3"
-            />
-            <BentoCard
-              url={`/${bento[3].id}`}
-              title={bento[3].name}
-              images={bento[3].images}
-              description={bento[3].description}
-              tags={bento[3].tags}
-              slot="slot4" 
-            />
-      </Bento>
-    ))}
-    <div class="blur"></div>
+<section id="vinilos" class="vinilos">
+    <header class="section-head">
+        <div class="labels">
+            <span class="mono">ss/02 · trabajos</span>
+            <span class="mono num">{String(projects.length).padStart(2, "0")} proyectos</span>
+        </div>
+        <h2>Del boceto al vinilo.</h2>
+        <p>
+            Una selección de trabajos recientes en rótulos, vehículos
+            y pequeñas piezas de decoración.
+        </p>
+    </header>
+
+    {
+        data.map((bento) => (
+            <Bento>
+                <BentoCard
+                    slot="slot1"
+                    url={`/${bento[0].id}`}
+                    title={bento[0].name}
+                    images={bento[0].images}
+                    description={bento[0].description}
+                    tags={bento[0].tags}
+                />
+                <BentoCard
+                    slot="slot2"
+                    url={`/${bento[1].id}`}
+                    title={bento[1].name}
+                    images={bento[1].images}
+                    description={bento[1].description}
+                    tags={bento[1].tags}
+                />
+                <BentoCard
+                    slot="slot3"
+                    url={`/${bento[2].id}`}
+                    title={bento[2].name}
+                    images={bento[2].images}
+                    description={bento[2].description}
+                    tags={bento[2].tags}
+                />
+                <BentoCard
+                    slot="slot4"
+                    url={`/${bento[3].id}`}
+                    title={bento[3].name}
+                    images={bento[3].images}
+                    description={bento[3].description}
+                    tags={bento[3].tags}
+                />
+            </Bento>
+        ))
+    }
 </section>
 
 <style>
-  section {
-    min-height: 100vh;
-    width: 100%;
-    padding-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 10%); */
-  }
-
-  .blur {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 120px;
-    mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0, 1) 100%);
-    background-color: rgb(255, 255, 255);
-    z-index: 10;
-    pointer-events: none;
-
-    view-timeline-name: --image;
-    view-timeline-axis: block;
-
-    animation-timeline: --image;
-    animation-name: fadeOut;
-
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-    animation-fill-mode: both;
-    animation-range: entry 25% cover 30%;
-  }
-
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
+    .vinilos {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
     }
-    to {
-      opacity: 0;
+
+    .section-head {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 720px;
     }
-  }
+
+    .labels {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid var(--line-soft);
+        border-bottom: 1px solid var(--line-soft);
+        padding: 8px 0;
+        color: var(--paper-dim);
+    }
+    .labels .num {
+        color: var(--accent);
+    }
+
+    h2 {
+        font-size: clamp(2rem, 5vw, 3.4rem);
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        line-height: 1;
+    }
+
+    p {
+        color: var(--paper-dim);
+        max-width: 540px;
+    }
 </style>

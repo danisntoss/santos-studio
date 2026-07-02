@@ -1,6 +1,6 @@
 ---
-import PricingFeature from './PricingFeature.astro';
-import { CONSTANTS } from '../../data/constants';
+import PricingFeature from "./PricingFeature.astro";
+import { CONSTANTS } from "../../data/constants";
 
 interface Props {
     data: {
@@ -11,99 +11,155 @@ interface Props {
         price: string;
         features: string[];
     };
+    featured?: boolean;
 }
 
-const { data } = Astro.props;
+const { data, featured = false } = Astro.props;
 const featureIcon = CONSTANTS.pricings.commonData.featureIcon;
 ---
 
-<div class="card">
-    <div class="title">
-        <img src={data.icon} alt={data.alt} />
-        <h2>{data.title}</h2>
+<div class:list={["card", { featured }]}>
+    {featured && <span class="ribbon mono">recomendado</span>}
+    <div class="corner tl" aria-hidden="true"></div>
+    <div class="corner br" aria-hidden="true"></div>
+
+    <div class="head">
+        <span class="mono kind">{data.title}</span>
+        <div class="title">
+            <img src={data.icon} alt={data.alt} />
+            <h3>{data.title}</h3>
+        </div>
+        <p class="desc">{data.description}</p>
     </div>
-    <div class="description">
-        <p>{data.description}</p>
-    </div>
+
     <div class="content">
-        {
-            data.features.map((feature) => (
-                <PricingFeature title={feature} icon={featureIcon} />
-            ))
-        }
+        {data.features.map((feature) => (
+            <PricingFeature title={feature} icon={featureIcon} />
+        ))}
     </div>
+
     <div class="price">
-        <span class="initial">Desde</span>
-        <h3>{data.price}</h3>
+        <span class="initial mono">desde</span>
+        <span class="value">{data.price}</span>
     </div>
 </div>
 
 <style>
-    p{
-        text-wrap: balance;
-    }
     .card {
+        position: relative;
         width: 100%;
-        padding: 32px;
+        padding: 28px;
         display: flex;
         flex-direction: column;
-        align-items:;
-        gap: 2rem;
-        border-radius: 10px;
-        background: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        gap: 1.8rem;
+        border: 1px solid var(--line-soft);
+        border-radius: 6px;
+        background: linear-gradient(180deg, var(--ink-2) 0%, var(--ink) 100%);
+        transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .card:hover {
+        transform: translateY(-4px);
+        border-color: var(--paper-dim);
+    }
+    .card.featured {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 1px var(--accent), 0 30px 60px rgba(255, 91, 58, 0.15);
     }
 
+    .ribbon {
+        position: absolute;
+        top: -1px;
+        right: 20px;
+        transform: translateY(-50%);
+        padding: 4px 10px;
+        background: var(--accent);
+        color: var(--ink);
+        border-radius: 2px;
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+    }
+
+    .corner {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-color: var(--paper-dim);
+        opacity: 0.5;
+        pointer-events: none;
+    }
+    .corner.tl {
+        top: 8px;
+        left: 8px;
+        border-top: 1px solid;
+        border-left: 1px solid;
+    }
+    .corner.br {
+        bottom: 8px;
+        right: 8px;
+        border-bottom: 1px solid;
+        border-right: 1px solid;
+    }
+
+    .head {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .kind {
+        color: var(--paper-dim);
+    }
 
     .title {
-        height: 50px;
         display: flex;
         align-items: center;
-        gap: 1rem;
-
-        img {
-            --size: 32px;
-            width: var(--size);
-            height: var(--size);
-        }
-
-        h2 {
-            font-size: 2rem;
-        }
+        gap: 12px;
+    }
+    .title img {
+        width: 28px;
+        height: 28px;
+        filter: invert(1) brightness(1.2);
+    }
+    h3 {
+        font-size: 1.85rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
     }
 
-    .description {
-        min-height: 100px;
-        font-size: 1rem;
-        font-weight: 500;
+    .desc {
+        min-height: 72px;
+        font-size: 0.95rem;
+        color: var(--paper-dim);
         line-height: 1.5;
-        color: #333;
     }
-    
+
     .content {
-        height: 50%;
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 10px;
+        flex: 1;
     }
 
     .price {
-        height: 64px;
         display: flex;
+        align-items: baseline;
         justify-content: flex-end;
-        align-items: flex-end;
-        position: relative;
-
-        .initial {
-            font-size: 0.8rem;
-            color: #333;
-            position: absolute;
-            top: -5px;
-        }
-        h3 {
-            font-size: 2rem;
-            color: var(--primary);
-            text-align: end;
-        }
+        gap: 8px;
+        border-top: 1px solid var(--line-soft);
+        padding-top: 16px;
+    }
+    .initial {
+        color: var(--paper-dim);
+    }
+    .value {
+        font-family: var(--font-display);
+        font-size: 2.4rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--paper);
+    }
+    .featured .value {
+        color: var(--accent);
     }
 </style>

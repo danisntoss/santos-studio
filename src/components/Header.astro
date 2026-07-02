@@ -1,18 +1,29 @@
 ---
 import Button from "./Button.astro";
+import Logo from "./Logo.astro";
 import MessageIcon from "./icons/MessageIcon.astro";
 ---
 
 <header>
     <nav id="menu">
-        <Button type="secondary" link="/">
-            <img src="./logo.svg" alt="Santos Studio Logo" />
-        </Button>
-        <Button type="secondary" name="Hablemos" link="/contacto">
-            <MessageIcon color="black" />
-        </Button>
+        <a href="/" class="brand" aria-label="Santos Studio · Inicio">
+            <Logo size={32} class="brand-logo" />
+            <span class="brand-text">
+                <span class="brand-name">Santos Studio</span>
+                <span class="mono">ss/index</span>
+            </span>
+        </a>
+        <div class="nav-links">
+            <a href="/#vinilos" class="link mono">Trabajos</a>
+            <a href="/#precios" class="link mono">Precios</a>
+            <a href="/#faqs" class="link mono">Faq</a>
+            <Button type="primary" name="Hablemos" link="/contacto">
+                <MessageIcon color="currentColor" />
+            </Button>
+        </div>
     </nav>
 </header>
+
 <style>
     header {
         width: 100%;
@@ -24,33 +35,78 @@ import MessageIcon from "./icons/MessageIcon.astro";
         justify-content: center;
         align-items: center;
         z-index: 10;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(10, 22, 66, 0.55);
+        border-bottom: 1px solid var(--line-soft);
     }
     nav {
         height: 100%;
         width: 100%;
-        max-width: 1800px;
+        max-width: 1400px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 8px 16px 8px 16px;
+        padding: 8px 24px;
         gap: 16px;
-        background: #fff;
-    }
-    img {
-        width: 50px;
     }
 
-    a {
-        padding: 5px 15px 5px;
-        color: black;
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
         text-decoration: none;
-        transition: all 0.2s ease-in-out;
+        color: var(--paper);
     }
-    a:visited {
-        color: inherit;
+
+    :global(.brand-logo) {
+        flex-shrink: 0;
     }
-    a:hover {
-        transform: translateY(-2px);
-        cursor: pointer;
+
+    .brand-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+    }
+    .brand-name {
+        font-family: var(--font-display);
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+    }
+    .brand-text .mono {
+        font-size: 0.6rem;
+        color: var(--paper-dim);
+        margin-top: 2px;
+        letter-spacing: 0.2em;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .link {
+        color: var(--paper-dim);
+        text-decoration: none;
+        font-size: 0.72rem;
+        padding: 6px 8px;
+        transition: color 0.2s ease;
+    }
+    .link:hover {
+        color: var(--paper);
+    }
+
+    @media (max-width: 640px) {
+        nav {
+            padding: 8px 16px;
+        }
+        .brand-text .mono {
+            display: none;
+        }
+        .nav-links .link {
+            display: none;
+        }
     }
 </style>

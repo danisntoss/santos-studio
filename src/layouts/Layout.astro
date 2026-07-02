@@ -11,17 +11,25 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="author" content={CONSTANTS.webdata.author} />
 		<meta name="description" content={CONSTANTS.webdata.description} />
 		<meta name="keywords" content={CONSTANTS.webdata.keywords} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#0a1642" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+		/>
 		<title>{title || CONSTANTS.webdata.title}</title>
 	</head>
 	<body>
+		<div class="bg-grid" aria-hidden="true"></div>
 		<Header />
 		<section class="hero">
 			<slot name="hero" />
@@ -34,28 +42,83 @@ const { title } = Astro.props;
 </html>
 
 <style is:global>
-	@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-	
 	:root {
-		--col1: #ffe5ec;
-		--col2: #ffc2d1;
-		--col3: #ffb3c6;
-		--col4: #ff8fab;
-		--col5: #fb6f92;
-		--text-color: #000;
-		--bg-color: #fff;
-		--nav-height: 70px;
+		--ink: #0a1642;
+		--ink-2: #0e1c56;
+		--ink-3: #142575;
+		--line: #7fb3ff;
+		--line-soft: rgba(127, 179, 255, 0.16);
+		--line-softer: rgba(127, 179, 255, 0.08);
+		--paper: #eef4ff;
+		--paper-dim: #b6c4e6;
+		--accent: #ff5b3a;
+		--accent-2: #ffd166;
+		--nav-height: 64px;
+		--font-display: "Space Grotesk", system-ui, sans-serif;
+		--font-mono: "JetBrains Mono", ui-monospace, monospace;
 	}
-	* {
+
+	*,
+	*::before,
+	*::after {
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
-		font-family: "Poppins", system-ui, sans-serif;
-		font-size: 18px;
-		color: var(--text-color);
+	}
+
+	html {
 		scroll-behavior: smooth;
-		scrollbar-width: thin;
-		scrollbar-color: #666 #f7f7f7;
+		background: var(--ink);
+	}
+
+	body {
+		background: var(--ink);
+		color: var(--paper);
+		font-family: var(--font-display);
+		font-size: 17px;
+		line-height: 1.55;
+		font-weight: 400;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		overflow-x: hidden;
+		position: relative;
+		min-height: 100vh;
+	}
+
+	::selection {
+		background: var(--accent);
+		color: var(--ink);
+	}
+
+	.bg-grid {
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		z-index: 0;
+		background-image:
+			linear-gradient(var(--line-soft) 1px, transparent 1px),
+			linear-gradient(90deg, var(--line-soft) 1px, transparent 1px),
+			linear-gradient(var(--line-softer) 1px, transparent 1px),
+			linear-gradient(90deg, var(--line-softer) 1px, transparent 1px);
+		background-size:
+			120px 120px,
+			120px 120px,
+			24px 24px,
+			24px 24px;
+		mask-image: radial-gradient(
+			ellipse 100% 80% at 50% 40%,
+			#000 40%,
+			transparent 90%
+		);
+	}
+
+	header,
+	section.hero,
+	main,
+	footer {
+		position: relative;
+		z-index: 1;
 	}
 
 	section.hero {
@@ -63,29 +126,46 @@ const { title } = Astro.props;
 		padding-top: var(--nav-height);
 	}
 
-	body {
-		background: var(--bg-color);
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		overflow-x: hidden;
-	}
-
 	main {
 		width: 100%;
-		padding: 24px 64px;
 		max-width: 1240px;
+		padding: 24px 64px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
-		min-height: 100vh;
-		gap: 4rem;
-		margin-bottom: 2rem;
+		gap: 6rem;
+		margin-bottom: 4rem;
 	}
+
+	h1,
+	h2,
+	h3 {
+		font-family: var(--font-display);
+		letter-spacing: -0.02em;
+		color: var(--paper);
+	}
+
+	.mono {
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: var(--paper-dim);
+	}
+
+	.rule {
+		height: 1px;
+		width: 100%;
+		background: var(--line-soft);
+	}
+
 	@media (max-width: 768px) {
 		main {
-			padding: 24px 32px;
+			padding: 24px 24px;
+			gap: 4.5rem;
+		}
+		body {
+			font-size: 16px;
 		}
 	}
 	@media (max-width: 480px) {
