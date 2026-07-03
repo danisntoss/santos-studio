@@ -23,16 +23,16 @@ const siteName = CONSTANTS.webdata.title;
 const fullTitle = title
 	? `${title} · ${siteName}`
 	: `${siteName} · Diseño y corte de vinilo`;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://santos-studio.es").toString();
-const ogImageURL = new URL(image, Astro.site ?? "https://santos-studio.es").toString();
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.santos-studio.es").toString();
+const ogImageURL = new URL(image, Astro.site ?? "https://www.santos-studio.es").toString();
 
 const defaultLd = {
 	"@context": "https://schema.org",
 	"@type": "LocalBusiness",
-	"@id": "https://santos-studio.es/#business",
+	"@id": "https://www.santos-studio.es/#business",
 	name: siteName,
 	description: CONSTANTS.webdata.description,
-	url: "https://santos-studio.es",
+	url: "https://www.santos-studio.es",
 	image: ogImageURL,
 	email: "dani@santos-studio.es",
 	priceRange: "€€",

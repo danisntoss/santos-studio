@@ -3,6 +3,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://santos-studio.es',
+  site: 'https://www.santos-studio.es',
   integrations: [sitemap()]
 });

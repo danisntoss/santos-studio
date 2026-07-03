@@ -22,7 +22,7 @@ export const CONSTANTS = {
         author: 'Daniel Santos',
         description: 'Estudio de diseño y corte de vinilo. Trato personalizado y productos de calidad | Daniel Santos',
         keywords: 'Santos Studio, Daniel Santos, Diseño, Vinilo, Corte, Personalizado, Calidad',
-        url: 'https://santos-studio.es',
+        url: 'https://www.santos-studio.es',
     },
     pricings: {
         commonData: {
