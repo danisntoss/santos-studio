@@ -1,9 +1,10 @@
 ---
 interface Props {
     images: string[];
+    label?: string;
 }
 
-const { images } = Astro.props;
+const { images, label } = Astro.props;
 ---
 
 <div class="carousel" data-carousel>
@@ -13,7 +14,11 @@ const { images } = Astro.props;
                 <figure class="slide" style={`--bg: url(${image})`}>
                     <img
                         src={image}
-                        alt={`Imagen ${index + 1}`}
+                        alt={
+                            label
+                                ? `${label} — foto ${index + 1} de ${images.length}`
+                                : `Foto ${index + 1} de ${images.length}`
+                        }
                         loading="lazy"
                         decoding="async"
                     />

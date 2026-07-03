@@ -28,7 +28,7 @@ const { images, name, description, tags = [] } = Astro.props;
         <div class="corner tr" aria-hidden="true"></div>
         <div class="corner bl" aria-hidden="true"></div>
         <div class="corner br" aria-hidden="true"></div>
-        <Swiper images={images} />
+        <Swiper images={images} label={name} />
     </div>
 </article>
 

@@ -1,32 +1,110 @@
 ---
 interface Props {
-	title: string;
+	title?: string;
+	description?: string;
+	image?: string;
+	type?: "website" | "article";
+	structuredData?: unknown;
 }
 
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { CONSTANTS } from "../data/constants";
 
-const { title } = Astro.props;
+const {
+	title,
+	description = CONSTANTS.webdata.description,
+	image = "/og-image.png",
+	type = "website",
+	structuredData,
+} = Astro.props;
+
+const siteName = CONSTANTS.webdata.title;
+const fullTitle = title
+	? `${title} · ${siteName}`
+	: `${siteName} · Diseño y corte de vinilo`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://santos-studio.es").toString();
+const ogImageURL = new URL(image, Astro.site ?? "https://santos-studio.es").toString();
+
+const defaultLd = {
+	"@context": "https://schema.org",
+	"@type": "LocalBusiness",
+	"@id": "https://santos-studio.es/#business",
+	name: siteName,
+	description: CONSTANTS.webdata.description,
+	url: "https://santos-studio.es",
+	image: ogImageURL,
+	email: "dani@santos-studio.es",
+	priceRange: "€€",
+	address: {
+		"@type": "PostalAddress",
+		addressCountry: "ES",
+		addressRegion: "Madrid",
+	},
+	areaServed: {
+		"@type": "Country",
+		name: "España",
+	},
+	founder: {
+		"@type": "Person",
+		name: CONSTANTS.webdata.author,
+	},
+	sameAs: [
+		CONSTANTS.socials.instagram.url,
+		CONSTANTS.socials.linkedin.url,
+		CONSTANTS.socials.github.url,
+	],
+	makesOffer: [
+		{ "@type": "Offer", name: "Rótulos y carteles" },
+		{ "@type": "Offer", name: "Rotulación de vehículos" },
+		{ "@type": "Offer", name: "Vinilos personalizados" },
+	],
+};
+
+const ld = structuredData ?? defaultLd;
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="author" content={CONSTANTS.webdata.author} />
-		<meta name="description" content={CONSTANTS.webdata.description} />
-		<meta name="keywords" content={CONSTANTS.webdata.keywords} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="theme-color" content="#0a1642" />
+		<meta name="color-scheme" content="dark" />
+
+		<title>{fullTitle}</title>
+		<meta name="description" content={description} />
+		<meta name="author" content={CONSTANTS.webdata.author} />
+		<meta name="keywords" content={CONSTANTS.webdata.keywords} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<meta property="og:type" content={type} />
+		<meta property="og:site_name" content={siteName} />
+		<meta property="og:title" content={fullTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:image" content={ogImageURL} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:locale" content="es_ES" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={fullTitle} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageURL} />
+
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="alternate icon" type="image/png" href="/favicon.png" />
+		<link rel="apple-touch-icon" href="/favicon.png" />
+
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
 		/>
-		<title>{title || CONSTANTS.webdata.title}</title>
+
+		<script type="application/ld+json" set:html={JSON.stringify(ld)} />
 	</head>
 	<body>
 		<div class="bg-grid" aria-hidden="true"></div>

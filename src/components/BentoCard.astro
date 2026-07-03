@@ -14,7 +14,7 @@ const { title, images, url, tags, description } = Astro.props;
 
 <a class="bento-card" href={url} aria-label={`Ver proyecto ${title}`}>
     <div class="image-container">
-        <Swiper images={images} />
+        <Swiper images={images} label={title} />
         <div class="corner tl" aria-hidden="true"></div>
         <div class="corner tr" aria-hidden="true"></div>
         <div class="corner bl" aria-hidden="true"></div>

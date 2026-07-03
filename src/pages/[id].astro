@@ -13,9 +13,35 @@ export const getStaticPaths = async () => {
 };
 
 const { item } = Astro.props;
+
+const ogImage = item.images?.[0] ?? "/og-image.png";
+
+const projectLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: item.name,
+    description: item.description,
+    image: item.images,
+    creator: {
+        "@type": "Person",
+        name: "Daniel Santos",
+    },
+    keywords: item.tags?.join(", "),
+    isPartOf: {
+        "@type": "WebSite",
+        name: "Santos Studio",
+        url: "https://santos-studio.es",
+    },
+};
 ---
 
-<Layout title={item.name}>
+<Layout
+    title={item.name}
+    description={item.description}
+    image={ogImage}
+    type="article"
+    structuredData={projectLd}
+>
     <div slot="main" class="container">
         <Card
             name={item.name}

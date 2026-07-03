@@ -4,11 +4,14 @@ import Introduccion from "../components/Introduction.astro";
 import Vinilos from "../components/Vinilos.astro";
 import Pricings from "../components/pricings/Pricings.astro";
 import Faqs from "../components/faqs/Faqs.astro";
+
+const description =
+	"Santos Studio · Estudio de diseño y corte de vinilo en Madrid. Rótulos, rotulación de vehículos y vinilos personalizados hechos a mano.";
 ---
 
-<Layout title="Santos Studio">
+<Layout description={description}>
 	<Introduccion slot="hero" />
-	<Vinilos slot="main"/>
-	<Pricings slot="main"/>
-	<Faqs slot="main"/>
+	<Vinilos slot="main" />
+	<Pricings slot="main" />
+	<Faqs slot="main" />
 </Layout>
