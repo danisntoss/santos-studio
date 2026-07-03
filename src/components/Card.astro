@@ -1,9 +1,10 @@
 ---
 import Swiper from "./Swiper.astro";
+import type { ImageMetadata } from "astro";
 
 interface Props {
     name: string;
-    images: string[];
+    images: ImageMetadata[];
     description: string;
     tags?: string[];
 }
