@@ -8,12 +8,31 @@ interface Props {
     url: string;
     description: string;
     tags: string[];
+    feature?: boolean;
+    wide?: boolean;
 }
 
-const { title, images, url, tags, description } = Astro.props;
+const {
+    title,
+    images,
+    url,
+    tags,
+    description,
+    feature = false,
+    wide = false,
+} = Astro.props;
 ---
 
-<a class="bento-card" href={url} aria-label={`Ver proyecto ${title}`}>
+<a
+    class:list={["bento-card", { feature, wide, narrow: !feature && !wide }]}
+    href={url}
+    aria-label={`Ver proyecto ${title}`}
+>
+    {feature && (
+        <span class="ribbon mono" aria-hidden="true">
+            <span class="pin"></span> Destacado
+        </span>
+    )}
     <div class="image-container">
         <Swiper images={images} label={title} />
         <div class="corner tl" aria-hidden="true"></div>
@@ -51,7 +70,8 @@ const { title, images, url, tags, description } = Astro.props;
         border-radius: 6px;
         text-decoration: none;
         color: var(--paper);
-        transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        transition: transform 0.25s ease, border-color 0.25s ease,
+            box-shadow 0.25s ease;
         position: relative;
         overflow: hidden;
     }
@@ -67,6 +87,52 @@ const { title, images, url, tags, description } = Astro.props;
         color: var(--accent);
     }
 
+    .bento-card.feature {
+        grid-column: 1 / -1;
+        border-color: rgba(255, 91, 58, 0.4);
+        box-shadow: 0 0 0 1px rgba(255, 91, 58, 0.25),
+            0 30px 60px rgba(255, 91, 58, 0.08);
+        padding: 14px;
+    }
+
+    .bento-card.wide {
+        grid-column: span 4;
+    }
+    .bento-card.narrow {
+        grid-column: span 2;
+    }
+
+    @media (max-width: 900px) {
+        .bento-card.wide,
+        .bento-card.narrow {
+            grid-column: 1 / -1;
+        }
+    }
+
+    .ribbon {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 3;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px;
+        background: var(--accent);
+        color: var(--ink);
+        border-radius: 3px;
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+    .ribbon .pin {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--ink);
+    }
+
     .image-container {
         position: relative;
         width: 100%;
@@ -75,6 +141,10 @@ const { title, images, url, tags, description } = Astro.props;
         border-radius: 4px;
         overflow: hidden;
         background: #000;
+    }
+
+    .bento-card.feature .image-container {
+        min-height: 460px;
     }
 
     .corner {
@@ -118,6 +188,11 @@ const { title, images, url, tags, description } = Astro.props;
         padding: 8px 8px 4px;
     }
 
+    .bento-card.feature .text-info {
+        padding: 16px 12px 8px;
+        gap: 14px;
+    }
+
     .title-row {
         display: flex;
         justify-content: space-between;
@@ -132,6 +207,11 @@ const { title, images, url, tags, description } = Astro.props;
         color: var(--paper);
     }
 
+    .bento-card.feature h3 {
+        font-size: 2.2rem;
+        letter-spacing: -0.02em;
+    }
+
     .arrow {
         font-family: var(--font-mono);
         font-size: 1.15rem;
@@ -139,10 +219,19 @@ const { title, images, url, tags, description } = Astro.props;
         transition: transform 0.25s ease, color 0.25s ease;
     }
 
+    .bento-card.feature .arrow {
+        font-size: 1.6rem;
+    }
+
     .desc {
         font-size: 0.9rem;
         color: var(--paper-dim);
         line-height: 1.5;
+    }
+
+    .bento-card.feature .desc {
+        font-size: 1.05rem;
+        max-width: 640px;
     }
 
     .tags {
@@ -166,5 +255,14 @@ const { title, images, url, tags, description } = Astro.props;
     .tag-alt {
         color: var(--accent);
         border-color: rgba(255, 91, 58, 0.35);
+    }
+
+    @media (max-width: 900px) {
+        .bento-card.feature .image-container {
+            min-height: 360px;
+        }
+        .bento-card.feature h3 {
+            font-size: 1.8rem;
+        }
     }
 </style>

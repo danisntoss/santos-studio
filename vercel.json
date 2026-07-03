@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/1", "destination": "/estanco", "permanent": true },
+    { "source": "/2", "destination": "/metro", "permanent": true },
+    { "source": "/3", "destination": "/la-plazuela", "permanent": true },
+    { "source": "/4", "destination": "/honda-civic", "permanent": true },
+    { "source": "/5", "destination": "/exteriorplus", "permanent": true },
+    { "source": "/6", "destination": "/kawasaki", "permanent": true },
+    { "source": "/7", "destination": "/bowling", "permanent": true },
+    { "source": "/8", "destination": "/glovo", "permanent": true }
+  ]
+}

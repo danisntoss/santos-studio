@@ -7,9 +7,10 @@ interface Props {
     images: ImageMetadata[];
     description: string;
     tags?: string[];
+    category?: string;
 }
 
-const { images, name, description, tags = [] } = Astro.props;
+const { images, name, description, tags = [], category } = Astro.props;
 ---
 
 <article class="detail">
@@ -17,7 +18,9 @@ const { images, name, description, tags = [] } = Astro.props;
 
     <header class="head">
         <div class="labels">
-            <span class="mono">ss/proyecto</span>
+            <span class="mono">
+                {category ? `ss/${category.toLowerCase()}` : "ss/proyecto"}
+            </span>
             <span class="mono num">{tags.join(" · ")}</span>
         </div>
         <h1>{name}</h1>

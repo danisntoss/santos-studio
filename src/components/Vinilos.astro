@@ -1,60 +1,63 @@
 ---
-import { data } from "../data/data";
+import { projects, categories } from "../data/data";
 import BentoCard from "./BentoCard.astro";
-import Bento from "./Bento.astro";
 
-const projects = data.flat();
+const grouped = Object.entries(categories).map(([key, cat]) => ({
+    key,
+    ...cat,
+    items: projects.filter((p) => p.category === key),
+}));
 ---
 
 <section id="vinilos" class="vinilos">
     <header class="section-head">
         <div class="labels">
             <span class="mono">ss/02 · trabajos</span>
-            <span class="mono num">{String(projects.length).padStart(2, "0")} proyectos</span>
+            <span class="mono num">
+                {String(projects.length).padStart(2, "0")} proyectos
+            </span>
         </div>
         <h2>Del boceto al vinilo.</h2>
         <p>
-            Una selección de trabajos recientes en rótulos, vehículos
-            y pequeñas piezas de decoración.
+            Cada trabajo diseñado, cortado y montado a mano.
+            Divididos por lo que hago: motor y rótulos.
         </p>
     </header>
 
     {
-        data.map((bento) => (
-            <Bento>
-                <BentoCard
-                    slot="slot1"
-                    url={`/${bento[0].id}`}
-                    title={bento[0].name}
-                    images={bento[0].images}
-                    description={bento[0].description}
-                    tags={bento[0].tags}
-                />
-                <BentoCard
-                    slot="slot2"
-                    url={`/${bento[1].id}`}
-                    title={bento[1].name}
-                    images={bento[1].images}
-                    description={bento[1].description}
-                    tags={bento[1].tags}
-                />
-                <BentoCard
-                    slot="slot3"
-                    url={`/${bento[2].id}`}
-                    title={bento[2].name}
-                    images={bento[2].images}
-                    description={bento[2].description}
-                    tags={bento[2].tags}
-                />
-                <BentoCard
-                    slot="slot4"
-                    url={`/${bento[3].id}`}
-                    title={bento[3].name}
-                    images={bento[3].images}
-                    description={bento[3].description}
-                    tags={bento[3].tags}
-                />
-            </Bento>
+        grouped.map((cat) => (
+            <div id={cat.key} class="category">
+                <header class="cat-head">
+                    <span class="mono code">{cat.code}</span>
+                    <h3>{cat.label}</h3>
+                    <span class="mono count">
+                        {String(cat.items.length).padStart(2, "0")}
+                    </span>
+                </header>
+                <p class="cat-desc">{cat.description}</p>
+
+                <div class="grid">
+                    {(() => {
+                        let nfIdx = -1;
+                        return cat.items.map((item) => {
+                            if (!item.feature) nfIdx += 1;
+                            const pos = nfIdx % 4;
+                            const wide = pos === 0 || pos === 3;
+                            return (
+                                <BentoCard
+                                    url={`/${item.slug}`}
+                                    title={item.name}
+                                    images={item.images}
+                                    description={item.description}
+                                    tags={item.tags}
+                                    feature={item.feature}
+                                    wide={!item.feature && wide}
+                                />
+                            );
+                        });
+                    })()}
+                </div>
+            </div>
         ))
     }
 </section>
@@ -64,7 +67,7 @@ const projects = data.flat();
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 3rem;
+        gap: 4rem;
     }
 
     .section-head {
@@ -94,8 +97,55 @@ const projects = data.flat();
         line-height: 1;
     }
 
-    p {
+    section > .section-head p {
         color: var(--paper-dim);
         max-width: 540px;
+    }
+
+    .category {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .cat-head {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: baseline;
+        gap: 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--line-soft);
+    }
+    .cat-head .code {
+        color: var(--paper-dim);
+    }
+    .cat-head h3 {
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1;
+    }
+    .cat-head .count {
+        color: var(--accent);
+    }
+
+    .cat-desc {
+        color: var(--paper-dim);
+        max-width: 640px;
+        margin-top: -0.5rem;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-auto-flow: row dense;
+        gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+        .grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
     }
 </style>

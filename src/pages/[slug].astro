@@ -1,18 +1,17 @@
 ---
-import type { GetStaticPaths } from "astro";
-import { data } from "../data/data";
+import { projects, categories } from "../data/data";
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 
 export const getStaticPaths = async () => {
-    const datos = data.flat();
-    return datos.map((item) => ({
-        params: { id: item.id.toString() },
+    return projects.map((item) => ({
+        params: { slug: item.slug },
         props: { item },
     }));
 };
 
 const { item } = Astro.props;
+const cat = categories[item.category];
 
 const ogImage = item.images?.[0]?.src ?? "/og-image.png";
 
@@ -21,7 +20,9 @@ const projectLd = {
     "@type": "CreativeWork",
     name: item.name,
     description: item.description,
-    image: item.images.map((img) => new URL(img.src, "https://www.santos-studio.es").toString()),
+    image: item.images.map((img) =>
+        new URL(img.src, "https://www.santos-studio.es").toString(),
+    ),
     creator: {
         "@type": "Person",
         name: "Daniel Santos",
@@ -48,6 +49,7 @@ const projectLd = {
             images={item.images}
             description={item.description}
             tags={item.tags}
+            category={cat?.label}
         />
     </div>
 </Layout>
